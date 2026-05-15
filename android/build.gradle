@@ -1,0 +1,50 @@
+buildscript {
+  ext.getExtOrDefault = { name ->
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['HapticLibrary_' + name]
+  }
+
+  repositories {
+    google()
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:8.7.2'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${getExtOrDefault('kotlinVersion')}"
+  }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.facebook.react'
+
+def getExtOrIntegerDefault(name) {
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['HapticLibrary_' + name]).toInteger()
+}
+
+android {
+  namespace 'com.ayberkmogol.hapticlibrary'
+  compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
+
+  defaultConfig {
+    minSdkVersion getExtOrIntegerDefault('minSdkVersion')
+    targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
+  }
+
+  sourceSets {
+    main {
+      java.srcDirs += ['generated/java', 'generated/jni']
+    }
+  }
+}
+
+repositories {
+  google()
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'com.facebook.react:react-android'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:${getExtOrDefault('kotlinVersion')}"
+  implementation 'androidx.core:core-ktx:1.17.0'
+}
