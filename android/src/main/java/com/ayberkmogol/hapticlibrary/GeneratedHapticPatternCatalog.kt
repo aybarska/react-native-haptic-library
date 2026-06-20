@@ -491,39 +491,39 @@ object GeneratedHapticPatternCatalog {
           frequency = emptyList()
         ),
         impacts = listOf(
-          HapticKeyframe(0L, 0.6712f, 0.8f),
-          HapticKeyframe(60L, 0.6722f, 0.8f),
-          HapticKeyframe(120L, 0.5643f, 0.8f),
-          HapticKeyframe(180L, 0.5508f, 0.8f),
-          HapticKeyframe(240L, 0.6621f, 0.8f),
-          HapticKeyframe(300L, 0.6963f, 0.8f),
-          HapticKeyframe(360L, 0.6356f, 0.8f),
-          HapticKeyframe(420L, 0.6092f, 0.8f),
-          HapticKeyframe(480L, 0.6738f, 0.8f),
-          HapticKeyframe(540L, 0.6049f, 0.8f),
-          HapticKeyframe(600L, 0.6835f, 0.8f),
-          HapticKeyframe(660L, 0.5986f, 0.8f),
-          HapticKeyframe(720L, 0.5537f, 0.8f),
-          HapticKeyframe(780L, 0.5783f, 0.8f),
-          HapticKeyframe(840L, 0.5712f, 0.8f),
-          HapticKeyframe(900L, 0.6984f, 0.8f),
-          HapticKeyframe(960L, 0.5364f, 0.8f),
-          HapticKeyframe(1020L, 0.5785f, 0.8f),
-          HapticKeyframe(1080L, 0.5683f, 0.8f),
-          HapticKeyframe(1140L, 0.6777f, 0.8f),
-          HapticKeyframe(1200L, 0.5757f, 0.8f),
-          HapticKeyframe(1260L, 0.5441f, 0.8f),
-          HapticKeyframe(1320L, 0.5848f, 0.8f),
-          HapticKeyframe(1380L, 0.6862f, 0.8f),
-          HapticKeyframe(1440L, 0.5723f, 0.8f),
-          HapticKeyframe(1500L, 0.5566f, 0.8f),
-          HapticKeyframe(1560L, 0.636f, 0.8f),
-          HapticKeyframe(1620L, 0.5694f, 0.8f),
-          HapticKeyframe(1680L, 0.6937f, 0.8f),
-          HapticKeyframe(1740L, 0.6894f, 0.8f),
-          HapticKeyframe(1800L, 0.5668f, 0.8f),
-          HapticKeyframe(1860L, 0.6825f, 0.8f),
-          HapticKeyframe(1920L, 0.6384f, 0.8f)
+          HapticKeyframe(0L, 0.6f, 0.8f),
+          HapticKeyframe(60L, 0.6f, 0.8f),
+          HapticKeyframe(120L, 0.6f, 0.8f),
+          HapticKeyframe(180L, 0.6f, 0.8f),
+          HapticKeyframe(240L, 0.6f, 0.8f),
+          HapticKeyframe(300L, 0.6f, 0.8f),
+          HapticKeyframe(360L, 0.6f, 0.8f),
+          HapticKeyframe(420L, 0.6f, 0.8f),
+          HapticKeyframe(480L, 0.6f, 0.8f),
+          HapticKeyframe(540L, 0.6f, 0.8f),
+          HapticKeyframe(600L, 0.6f, 0.8f),
+          HapticKeyframe(660L, 0.6f, 0.8f),
+          HapticKeyframe(720L, 0.6f, 0.8f),
+          HapticKeyframe(780L, 0.6f, 0.8f),
+          HapticKeyframe(840L, 0.6f, 0.8f),
+          HapticKeyframe(900L, 0.6f, 0.8f),
+          HapticKeyframe(960L, 0.6f, 0.8f),
+          HapticKeyframe(1020L, 0.6f, 0.8f),
+          HapticKeyframe(1080L, 0.6f, 0.8f),
+          HapticKeyframe(1140L, 0.6f, 0.8f),
+          HapticKeyframe(1200L, 0.6f, 0.8f),
+          HapticKeyframe(1260L, 0.6f, 0.8f),
+          HapticKeyframe(1320L, 0.6f, 0.8f),
+          HapticKeyframe(1380L, 0.6f, 0.8f),
+          HapticKeyframe(1440L, 0.6f, 0.8f),
+          HapticKeyframe(1500L, 0.6f, 0.8f),
+          HapticKeyframe(1560L, 0.6f, 0.8f),
+          HapticKeyframe(1620L, 0.6f, 0.8f),
+          HapticKeyframe(1680L, 0.6f, 0.8f),
+          HapticKeyframe(1740L, 0.6f, 0.8f),
+          HapticKeyframe(1800L, 0.6f, 0.8f),
+          HapticKeyframe(1860L, 0.6f, 0.8f),
+          HapticKeyframe(1920L, 0.6f, 0.8f)
         )
       )
     ),
@@ -710,11 +710,11 @@ object GeneratedHapticPatternCatalog {
         ),
         impacts = listOf(
           HapticKeyframe(0L, 0.8f, 0.7f),
-          HapticKeyframe(100L, 0.5481f, 0.5f),
-          HapticKeyframe(250L, 0.6801f, 0.5f),
-          HapticKeyframe(400L, 0.5942f, 0.5f),
-          HapticKeyframe(550L, 0.675f, 0.5f),
-          HapticKeyframe(700L, 0.5774f, 0.5f)
+          HapticKeyframe(100L, 0.55f, 0.5f),
+          HapticKeyframe(250L, 0.55f, 0.5f),
+          HapticKeyframe(400L, 0.55f, 0.5f),
+          HapticKeyframe(550L, 0.55f, 0.5f),
+          HapticKeyframe(700L, 0.55f, 0.5f)
         )
       )
     ),
@@ -1050,16 +1050,16 @@ object GeneratedHapticPatternCatalog {
           frequency = emptyList()
         ),
         impacts = listOf(
-          HapticKeyframe(0L, 0.5753f, 0.8368f),
-          HapticKeyframe(100L, 0.5642f, 0.785f),
-          HapticKeyframe(200L, 0.4665f, 0.8121f),
-          HapticKeyframe(300L, 0.67f, 0.7017f),
-          HapticKeyframe(400L, 0.4813f, 0.8319f),
-          HapticKeyframe(500L, 0.4311f, 0.602f),
-          HapticKeyframe(600L, 0.5479f, 0.6988f),
-          HapticKeyframe(700L, 0.7415f, 0.778f),
-          HapticKeyframe(800L, 0.4407f, 0.7252f),
-          HapticKeyframe(900L, 0.6466f, 0.7448f)
+          HapticKeyframe(0L, 0.6f, 0.8f),
+          HapticKeyframe(100L, 0.6f, 0.8f),
+          HapticKeyframe(200L, 0.6f, 0.8f),
+          HapticKeyframe(300L, 0.6f, 0.8f),
+          HapticKeyframe(400L, 0.6f, 0.8f),
+          HapticKeyframe(500L, 0.6f, 0.8f),
+          HapticKeyframe(600L, 0.6f, 0.8f),
+          HapticKeyframe(700L, 0.6f, 0.8f),
+          HapticKeyframe(800L, 0.6f, 0.8f),
+          HapticKeyframe(900L, 0.6f, 0.8f)
         )
       )
     ),
@@ -2822,14 +2822,14 @@ object GeneratedHapticPatternCatalog {
           frequency = emptyList()
         ),
         impacts = listOf(
-          HapticKeyframe(32L, 0.5635f, 0.8307f),
-          HapticKeyframe(133L, 0.2655f, 0.7505f),
-          HapticKeyframe(381L, 0.34f, 0.6305f),
-          HapticKeyframe(482L, 0.5768f, 0.8061f),
-          HapticKeyframe(718L, 0.2021f, 0.6083f),
-          HapticKeyframe(897L, 0.5491f, 0.8489f),
-          HapticKeyframe(1012L, 0.5538f, 0.6753f),
-          HapticKeyframe(1190L, 0.3722f, 0.9965f)
+          HapticKeyframe(0L, 0.4f, 0.8f),
+          HapticKeyframe(171L, 0.4f, 0.8f),
+          HapticKeyframe(343L, 0.4f, 0.8f),
+          HapticKeyframe(514L, 0.4f, 0.8f),
+          HapticKeyframe(686L, 0.4f, 0.8f),
+          HapticKeyframe(857L, 0.4f, 0.8f),
+          HapticKeyframe(1029L, 0.4f, 0.8f),
+          HapticKeyframe(1190L, 0.4f, 0.8f)
         )
       )
     ),
@@ -3583,13 +3583,13 @@ object GeneratedHapticPatternCatalog {
           )
         ),
         impacts = listOf(
-          HapticKeyframe(600L, 0.5408f, 0.8f),
-          HapticKeyframe(800L, 0.5272f, 0.8f),
-          HapticKeyframe(1000L, 0.4069f, 0.8f),
-          HapticKeyframe(1200L, 0.4418f, 0.8f),
-          HapticKeyframe(1400L, 0.6373f, 0.8f),
-          HapticKeyframe(1600L, 0.6288f, 0.8f),
-          HapticKeyframe(1800L, 0.5301f, 0.8f)
+          HapticKeyframe(600L, 0.6f, 0.8f),
+          HapticKeyframe(800L, 0.6f, 0.8f),
+          HapticKeyframe(1000L, 0.6f, 0.8f),
+          HapticKeyframe(1200L, 0.6f, 0.8f),
+          HapticKeyframe(1400L, 0.6f, 0.8f),
+          HapticKeyframe(1600L, 0.6f, 0.8f),
+          HapticKeyframe(1800L, 0.6f, 0.8f)
         )
       )
     ),
@@ -3736,16 +3736,16 @@ object GeneratedHapticPatternCatalog {
           )
         ),
         impacts = listOf(
-          HapticKeyframe(600L, 0.5914f, 0.8f),
-          HapticKeyframe(750L, 0.8264f, 0.8f),
-          HapticKeyframe(900L, 0.8421f, 0.8f),
-          HapticKeyframe(1050L, 0.7709f, 0.8f),
-          HapticKeyframe(1200L, 0.6996f, 0.8f),
-          HapticKeyframe(1350L, 0.6635f, 0.8f),
-          HapticKeyframe(1500L, 0.8256f, 0.8f),
-          HapticKeyframe(1650L, 0.6875f, 0.8f),
-          HapticKeyframe(1800L, 0.8561f, 0.8f),
-          HapticKeyframe(1950L, 0.5889f, 0.8f)
+          HapticKeyframe(600L, 0.7f, 0.8f),
+          HapticKeyframe(750L, 0.7f, 0.8f),
+          HapticKeyframe(900L, 0.7f, 0.8f),
+          HapticKeyframe(1050L, 0.7f, 0.8f),
+          HapticKeyframe(1200L, 0.7f, 0.8f),
+          HapticKeyframe(1350L, 0.7f, 0.8f),
+          HapticKeyframe(1500L, 0.7f, 0.8f),
+          HapticKeyframe(1650L, 0.7f, 0.8f),
+          HapticKeyframe(1800L, 0.7f, 0.8f),
+          HapticKeyframe(1950L, 0.7f, 0.8f)
         )
       )
     ),
@@ -3877,11 +3877,11 @@ object GeneratedHapticPatternCatalog {
           )
         ),
         impacts = listOf(
-          HapticKeyframe(0L, 0.3012f, 0.9f),
-          HapticKeyframe(150L, 0.5197f, 0.9f),
-          HapticKeyframe(300L, 0.49f, 0.9f),
-          HapticKeyframe(450L, 0.6308f, 0.9f),
-          HapticKeyframe(600L, 0.5533f, 0.9f),
+          HapticKeyframe(0L, 0.5f, 0.9f),
+          HapticKeyframe(150L, 0.5f, 0.9f),
+          HapticKeyframe(300L, 0.5f, 0.9f),
+          HapticKeyframe(450L, 0.5f, 0.9f),
+          HapticKeyframe(600L, 0.5f, 0.9f),
           HapticKeyframe(800L, 0.9f, 0.7f),
           HapticKeyframe(1200L, 0.8f, 0.8f)
         )
@@ -4043,14 +4043,14 @@ object GeneratedHapticPatternCatalog {
           HapticKeyframe(200L, 0.6f, 0.9f),
           HapticKeyframe(400L, 0.6f, 0.9f),
           HapticKeyframe(800L, 1.0f, 1.0f),
-          HapticKeyframe(900L, 0.6089f, 0.8f),
-          HapticKeyframe(1050L, 0.4456f, 0.8f),
-          HapticKeyframe(1200L, 0.5613f, 0.8f),
-          HapticKeyframe(1350L, 0.7855f, 0.8f),
-          HapticKeyframe(1500L, 0.5177f, 0.8f),
-          HapticKeyframe(1650L, 0.5011f, 0.8f),
-          HapticKeyframe(1800L, 0.4288f, 0.8f),
-          HapticKeyframe(1950L, 0.651f, 0.8f)
+          HapticKeyframe(900L, 0.6f, 0.8f),
+          HapticKeyframe(1050L, 0.6f, 0.8f),
+          HapticKeyframe(1200L, 0.6f, 0.8f),
+          HapticKeyframe(1350L, 0.6f, 0.8f),
+          HapticKeyframe(1500L, 0.6f, 0.8f),
+          HapticKeyframe(1650L, 0.6f, 0.8f),
+          HapticKeyframe(1800L, 0.6f, 0.8f),
+          HapticKeyframe(1950L, 0.6f, 0.8f)
         )
       )
     ),
@@ -4579,18 +4579,18 @@ object GeneratedHapticPatternCatalog {
         ),
         impacts = listOf(
           HapticKeyframe(0L, 0.8f, 0.9f),
-          HapticKeyframe(200L, 0.5666f, 0.8f),
-          HapticKeyframe(350L, 0.5623f, 0.8f),
-          HapticKeyframe(500L, 0.7091f, 0.8f),
-          HapticKeyframe(650L, 0.6833f, 0.8f),
-          HapticKeyframe(800L, 0.7398f, 0.8f),
-          HapticKeyframe(950L, 0.7023f, 0.8f),
-          HapticKeyframe(1100L, 0.6824f, 0.8f),
-          HapticKeyframe(1250L, 0.7186f, 0.8f),
-          HapticKeyframe(1400L, 0.9246f, 0.8f),
-          HapticKeyframe(1550L, 0.8667f, 0.8f),
-          HapticKeyframe(1700L, 0.9422f, 0.8f),
-          HapticKeyframe(1850L, 0.9521f, 0.8f),
+          HapticKeyframe(200L, 0.6f, 0.8f),
+          HapticKeyframe(350L, 0.63f, 0.8f),
+          HapticKeyframe(500L, 0.66f, 0.8f),
+          HapticKeyframe(650L, 0.69f, 0.8f),
+          HapticKeyframe(800L, 0.72f, 0.8f),
+          HapticKeyframe(950L, 0.75f, 0.8f),
+          HapticKeyframe(1100L, 0.78f, 0.8f),
+          HapticKeyframe(1250L, 0.81f, 0.8f),
+          HapticKeyframe(1400L, 0.84f, 0.8f),
+          HapticKeyframe(1550L, 0.87f, 0.8f),
+          HapticKeyframe(1700L, 0.9f, 0.8f),
+          HapticKeyframe(1850L, 0.93f, 0.8f),
           HapticKeyframe(2500L, 1.0f, 0.7f)
         )
       )
@@ -4706,14 +4706,14 @@ object GeneratedHapticPatternCatalog {
           )
         ),
         impacts = listOf(
-          HapticKeyframe(0L, 0.2946f, 0.8f),
-          HapticKeyframe(59L, 0.2676f, 0.8f),
-          HapticKeyframe(90L, 0.313f, 0.8f),
-          HapticKeyframe(143L, 0.2226f, 0.8f),
-          HapticKeyframe(197L, 0.2039f, 0.8f),
-          HapticKeyframe(259L, 0.3952f, 0.8f),
-          HapticKeyframe(306L, 0.2175f, 0.8f),
-          HapticKeyframe(358L, 0.3624f, 0.8f)
+          HapticKeyframe(0L, 0.3f, 0.8f),
+          HapticKeyframe(50L, 0.3f, 0.8f),
+          HapticKeyframe(100L, 0.3f, 0.8f),
+          HapticKeyframe(150L, 0.3f, 0.8f),
+          HapticKeyframe(200L, 0.3f, 0.8f),
+          HapticKeyframe(250L, 0.3f, 0.8f),
+          HapticKeyframe(300L, 0.3f, 0.8f),
+          HapticKeyframe(350L, 0.3f, 0.8f)
         )
       )
     ),

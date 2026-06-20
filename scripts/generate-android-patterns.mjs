@@ -8,7 +8,7 @@ import { dirname, join, resolve } from 'node:path';
 const rootDir = resolve(new URL('..', import.meta.url).pathname);
 const hapticOptionPath = join(rootDir, 'ios/HapticCore/Models/HapticOption.swift');
 const patternsDir = join(rootDir, 'ios/HapticCore/Models/Patterns');
-const outputJsonPath = join(rootDir, 'generated/swiftful-haptics.patterns.json');
+const outputJsonPath = join(rootDir, 'generated/core-haptics.patterns.json');
 const outputKotlinPath = join(
   rootDir,
   'android/src/main/java/com/ayberkmogol/hapticlibrary/GeneratedHapticPatternCatalog.kt'
@@ -129,20 +129,44 @@ FileHandle.standardOutput.write(data)
 `;
 }
 
+function normalizeRandomCalls(source) {
+  return source.replace(
+    /\b(Float|Double)\.random\(in:\s*(-?\d+(?:\.\d+)?)\s*\.\.\.\s*(-?\d+(?:\.\d+)?)\s*\)/g,
+    (_match, typeName, lower, upper) => {
+      const midpoint = (Number(lower) + Number(upper)) / 2;
+      const literal = Number.isInteger(midpoint) ? midpoint.toFixed(1) : String(Math.round(midpoint * 1000000) / 1000000);
+      return typeName === 'Float' ? `Float(${literal})` : literal;
+    }
+  );
+}
+
+function writeNormalizedSource(sourcePath, targetPath) {
+  writeFileSync(targetPath, normalizeRandomCalls(readFileSync(sourcePath, 'utf8')));
+}
+
 function dumpSwiftPatterns(patterns) {
   const buildDir = mkdtempSync(join(tmpdir(), 'rnhaptic-patterns-'));
   try {
+    const sourceDir = join(buildDir, 'Sources');
+    mkdirSync(sourceDir, { recursive: true });
+
+    const normalizedHapticOptionPath = join(sourceDir, 'HapticOption.swift');
+    writeNormalizedSource(hapticOptionPath, normalizedHapticOptionPath);
+
+    const normalizedPatternPaths = readdirSync(patternsDir)
+      .filter((file) => file.endsWith('.swift'))
+      .map((file) => {
+        const sourcePath = join(patternsDir, file);
+        const targetPath = join(sourceDir, file);
+        writeNormalizedSource(sourcePath, targetPath);
+        return targetPath;
+      });
+
     const mainPath = join(buildDir, 'main.swift');
     const binaryPath = join(buildDir, 'dump-patterns');
     writeFileSync(mainPath, generateSwiftDumper(patterns));
 
-    const sources = [
-      hapticOptionPath,
-      ...readdirSync(patternsDir)
-        .filter((file) => file.endsWith('.swift'))
-        .map((file) => join(patternsDir, file)),
-      mainPath,
-    ];
+    const sources = [normalizedHapticOptionPath, ...normalizedPatternPaths, mainPath];
 
     execFileSync('swiftc', [...sources, '-o', binaryPath], { stdio: 'inherit' });
     return JSON.parse(execFileSync(binaryPath, { encoding: 'utf8' }));

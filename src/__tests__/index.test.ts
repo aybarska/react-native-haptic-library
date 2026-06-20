@@ -21,7 +21,7 @@ jest.mock('../NativeHapticLibrary', () => ({
 
 import { Haptics, Presets, patternNames } from '../index';
 
-const generatedAndroidPatterns = require('../../generated/swiftful-haptics.patterns.json') as {
+const generatedAndroidPatterns = require('../../generated/core-haptics.patterns.json') as {
   patterns: Array<{ name: string }>;
   errors: Array<{ name: string; error: string }>;
 };

@@ -1,3 +1,5 @@
+![react-native-haptic-library header](./assets/haptic-header.png)
+
 # react-native-haptic-library
 
 A React Native haptic feedback library with a typed preset API, native iOS playback, and Android vibration mappings.
@@ -105,4 +107,4 @@ Android preset data is generated from the vendored iOS CoreHaptics catalog:
 npm run generate:android-patterns
 ```
 
-The command compiles the Swift pattern catalog, exports each CoreHaptics pattern, writes `generated/swiftful-haptics.patterns.json`, and refreshes the Android Kotlin catalog.
+The command compiles the Swift pattern catalog, exports each CoreHaptics pattern, writes `generated/core-haptics.patterns.json`, and refreshes the Android Kotlin catalog.
