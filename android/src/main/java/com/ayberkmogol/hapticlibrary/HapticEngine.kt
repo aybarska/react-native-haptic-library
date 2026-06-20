@@ -8,7 +8,9 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import androidx.core.content.ContextCompat
+import com.facebook.react.bridge.ReactApplicationContext
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -33,7 +35,7 @@ class HapticEngine(private val context: Context) {
   fun supportLevel(): HapticSupport {
     if (!isSupported()) return HapticSupport.NO_SUPPORT
     return when {
-      Build.VERSION.SDK_INT >= 35 && vibrator?.hasAmplitudeControl() == true -> HapticSupport.ADVANCED_SUPPORT
+      supportsPrimitiveComposition() && vibrator?.hasAmplitudeControl() == true -> HapticSupport.ADVANCED_SUPPORT
       Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && vibrator?.hasAmplitudeControl() == true -> HapticSupport.STANDARD_SUPPORT
       else -> HapticSupport.LIMITED_SUPPORT
     }
@@ -50,8 +52,19 @@ class HapticEngine(private val context: Context) {
       return
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      vibrator?.vibrate(effect)
+      try {
+        vibrator?.vibrate(effect)
+      } catch (securityException: SecurityException) {
+        Log.w(TAG, "Skipping haptic feedback because the app cannot use the vibrator", securityException)
+      }
     }
+  }
+
+  fun playViewEffect(name: String): Boolean {
+    if (!enabled) return false
+    val effect = viewEffectForName(name) ?: return false
+    val decorView = (context as? ReactApplicationContext)?.currentActivity?.window?.decorView ?: return false
+    return decorView.performHapticFeedback(effect)
   }
 
   fun createSystemEffect(name: String): VibrationEffect? {
@@ -89,7 +102,9 @@ class HapticEngine(private val context: Context) {
     }
 
     return if (vibrator?.hasAmplitudeControl() == true) {
-      VibrationEffect.createWaveform(timings.toLongArray(), amplitudes.toIntArray(), -1)
+      val timingArray = timings.toLongArray()
+      if (!hasPlayableWaveform(timingArray)) return null
+      VibrationEffect.createWaveform(timingArray, amplitudes.toIntArray(), -1)
     } else {
       val timingOnly = mutableListOf<Long>()
       var vibrating = false
@@ -104,7 +119,9 @@ class HapticEngine(private val context: Context) {
           vibrating = shouldVibrate
         }
       }
-      VibrationEffect.createWaveform(timingOnly.toLongArray(), -1)
+      val timingArray = timingOnly.toLongArray()
+      if (!hasPlayableWaveform(timingArray)) return null
+      VibrationEffect.createWaveform(timingArray, -1)
     }
   }
 
@@ -127,6 +144,35 @@ class HapticEngine(private val context: Context) {
       previous = point.time
     }
     return composition.compose()
+  }
+
+  private fun supportsPrimitiveComposition(): Boolean {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return false
+    return vibrator?.areAllPrimitivesSupported(
+      VibrationEffect.Composition.PRIMITIVE_CLICK,
+      VibrationEffect.Composition.PRIMITIVE_TICK
+    ) == true
+  }
+
+  private fun viewEffectForName(name: String): Int? {
+    return when (name.lowercase()) {
+      "longpressactivation" -> HapticFeedbackConstants.LONG_PRESS
+      "buttonpress", "appicontap" -> HapticFeedbackConstants.VIRTUAL_KEY
+      "keyboardtap", "typingindicator" -> HapticFeedbackConstants.KEYBOARD_TAP
+      "tabselection", "selectiontick", "pickerdetent", "sliderstep", "slidertick",
+      "slidervaluechange", "softtick" -> HapticFeedbackConstants.CLOCK_TICK
+      "contextualmenu" -> HapticFeedbackConstants.CONTEXT_CLICK
+      "inputerror" -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) HapticFeedbackConstants.REJECT else null
+      "formsubmit", "loadingcomplete", "downloadcomplete" ->
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) HapticFeedbackConstants.CONFIRM else null
+      "toggleswitch" ->
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) HapticFeedbackConstants.TOGGLE_ON else null
+      else -> null
+    }
+  }
+
+  private fun hasPlayableWaveform(timings: LongArray): Boolean {
+    return timings.isNotEmpty() && timings.any { it > 0L }
   }
 
   private fun toTimeline(pattern: HapticBlueprint): List<Pair<Long, Float>> {

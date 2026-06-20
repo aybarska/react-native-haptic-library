@@ -8,6 +8,9 @@ class HapticPlayer(context: Context) {
   private val cache = mutableMapOf<String, VibrationEffect?>()
 
   fun play(name: String, optionsJson: String) {
+    if (usesDefaultOptions(optionsJson) && engine.playViewEffect(name)) {
+      return
+    }
     val key = "${name.lowercase()}::$optionsJson"
     val effect = cache.getOrPut(key) { createEffect(name, optionsJson) }
     engine.play(effect)
@@ -28,5 +31,9 @@ class HapticPlayer(context: Context) {
     engine.createSystemEffect(name)?.let { return it }
     val pattern = HapticPatternCatalog.pattern(name, optionsJson) ?: return null
     return engine.createEffect(pattern)
+  }
+
+  private fun usesDefaultOptions(optionsJson: String): Boolean {
+    return optionsJson.isBlank() || optionsJson == "{}"
   }
 }
