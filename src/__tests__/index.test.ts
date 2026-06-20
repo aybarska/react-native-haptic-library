@@ -1,21 +1,21 @@
 let mockNative: {
-  RNHapticLibrary_play: jest.Mock;
-  RNHapticLibrary_prepare: jest.Mock;
-  RNHapticLibrary_stop: jest.Mock;
-  RNHapticLibrary_setEnabled: jest.Mock;
-  RNHapticLibrary_isSupported: jest.Mock;
-  RNHapticLibrary_getPatternNames: jest.Mock;
+  play: jest.Mock;
+  prepare: jest.Mock;
+  stop: jest.Mock;
+  setEnabled: jest.Mock;
+  isSupported: jest.Mock;
+  getPatternNames: jest.Mock;
 };
 
 jest.mock('../NativeHapticLibrary', () => ({
   __esModule: true,
   default: (mockNative = {
-    RNHapticLibrary_play: jest.fn(),
-    RNHapticLibrary_prepare: jest.fn(),
-    RNHapticLibrary_stop: jest.fn(),
-    RNHapticLibrary_setEnabled: jest.fn(),
-    RNHapticLibrary_isSupported: jest.fn(() => true),
-    RNHapticLibrary_getPatternNames: jest.fn(() => []),
+    play: jest.fn(),
+    prepare: jest.fn(),
+    stop: jest.fn(),
+    setEnabled: jest.fn(),
+    isSupported: jest.fn(() => true),
+    getPatternNames: jest.fn(() => []),
   }),
 }));
 
@@ -33,12 +33,12 @@ describe('react-native-haptic-library', () => {
 
   it('plays a named pattern with normalized options', () => {
     Haptics.play('success', { duration: 0.4 });
-    expect(mockNative.RNHapticLibrary_play).toHaveBeenCalledWith('success', JSON.stringify({ duration: 0.4 }));
+    expect(mockNative.play).toHaveBeenCalledWith('success', JSON.stringify({ duration: 0.4 }));
   });
 
   it('normalizes prepare input to an array', () => {
     Haptics.prepare('coinCollectSingle');
-    expect(mockNative.RNHapticLibrary_prepare).toHaveBeenCalledWith(['coinCollectSingle']);
+    expect(mockNative.prepare).toHaveBeenCalledWith(['coinCollectSingle']);
   });
 
   it('exports every generated preset as a callable function', () => {
@@ -50,7 +50,7 @@ describe('react-native-haptic-library', () => {
 
   it('routes generated presets to the native module', () => {
     Presets.coinCollectSingle({ duration: 0.2 });
-    expect(mockNative.RNHapticLibrary_play).toHaveBeenCalledWith('coinCollectSingle', JSON.stringify({ duration: 0.2 }));
+    expect(mockNative.play).toHaveBeenCalledWith('coinCollectSingle', JSON.stringify({ duration: 0.2 }));
   });
 
   it('generates Android pattern data for every CoreHaptics preset', () => {

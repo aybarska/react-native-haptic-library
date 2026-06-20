@@ -61,32 +61,32 @@ static NSDictionary *RNHapticLibraryOptionsFromJSONString(NSString *json)
   return [object isKindOfClass:NSDictionary.class] ? object : @{};
 }
 
-- (void)RNHapticLibrary_play:(nonnull NSString *)name optionsJson:(nonnull NSString *)optionsJson
+RCT_EXPORT_METHOD(play:(nonnull NSString *)name optionsJson:(nonnull NSString *)optionsJson)
 {
   [bridge_ play:name options:RNHapticLibraryOptionsFromJSONString(optionsJson)];
 }
 
-- (void)RNHapticLibrary_prepare:(nonnull NSArray<NSString *> *)names
+RCT_EXPORT_METHOD(prepare:(nonnull NSArray<NSString *> *)names)
 {
   [bridge_ prepare:names];
 }
 
-- (void)RNHapticLibrary_stop
+RCT_EXPORT_METHOD(stop)
 {
   [bridge_ stop];
 }
 
-- (void)RNHapticLibrary_setEnabled:(BOOL)enabled
+RCT_EXPORT_METHOD(setEnabled:(BOOL)enabled)
 {
   [bridge_ setEnabled:enabled];
 }
 
-- (nonnull NSNumber *)RNHapticLibrary_isSupported
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(isSupported)
 {
   return @([bridge_ isSupported]);
 }
 
-- (nonnull NSArray<NSString *> *)RNHapticLibrary_getPatternNames
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getPatternNames)
 {
   return [bridge_ patternNames];
 }

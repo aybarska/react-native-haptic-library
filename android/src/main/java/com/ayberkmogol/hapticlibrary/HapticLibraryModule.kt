@@ -12,11 +12,11 @@ class HapticLibraryModule(reactContext: ReactApplicationContext) :
 
   private val player = HapticPlayer(reactContext)
 
-  override fun RNHapticLibrary_play(name: String, optionsJson: String) {
+  override fun play(name: String, optionsJson: String) {
     player.play(name, optionsJson)
   }
 
-  override fun RNHapticLibrary_prepare(names: ReadableArray) {
+  override fun prepare(names: ReadableArray) {
     val parsedNames = mutableListOf<String>()
     for (index in 0 until names.size()) {
       names.getString(index)?.let { parsedNames.add(it) }
@@ -24,17 +24,17 @@ class HapticLibraryModule(reactContext: ReactApplicationContext) :
     player.prepare(parsedNames)
   }
 
-  override fun RNHapticLibrary_stop() {
+  override fun stop() {
     player.stop()
   }
 
-  override fun RNHapticLibrary_setEnabled(enabled: Boolean) {
+  override fun setEnabled(enabled: Boolean) {
     player.setEnabled(enabled)
   }
 
-  override fun RNHapticLibrary_isSupported(): Boolean = player.isSupported()
+  override fun isSupported(): Boolean = player.isSupported()
 
-  override fun RNHapticLibrary_getPatternNames(): WritableArray {
+  override fun getPatternNames(): WritableArray {
     val array = Arguments.createArray()
     HapticPatternCatalog.names().forEach { array.pushString(it) }
     return array

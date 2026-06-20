@@ -5,19 +5,19 @@ import type { HapticLibrary, HapticOptions } from './types';
 
 export const Haptics: HapticLibrary = {
   play(name: string, options?: HapticOptions) {
-    Native.RNHapticLibrary_play(name, normalizeOptions(options));
+    Native.play(name, normalizeOptions(options));
   },
   prepare(names: string | string[]) {
-    Native.RNHapticLibrary_prepare(Array.isArray(names) ? names : [names]);
+    Native.prepare(Array.isArray(names) ? names : [names]);
   },
   stop() {
-    Native.RNHapticLibrary_stop();
+    Native.stop();
   },
   setEnabled(enabled: boolean) {
-    Native.RNHapticLibrary_setEnabled(enabled);
+    Native.setEnabled(enabled);
   },
   isSupported() {
-    return Native.RNHapticLibrary_isSupported();
+    return Native.isSupported();
   },
 };
 
