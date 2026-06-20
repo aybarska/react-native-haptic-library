@@ -25,6 +25,34 @@ Haptics.setEnabled(true);
 Haptics.stop();
 ```
 
+## Haptic Categories
+
+The library ships 225 named presets grouped by interaction intent. Use the `Presets` helpers for autocomplete, or pass the same names to `Haptics.play(name)`.
+
+| Category | Count | Example presets |
+| --- | ---: | --- |
+| Basic Haptics | 9 | `selection`, `soft`, `rigid`, `light`, `medium`, `heavy`, `success`, `error`, `warning` |
+| Gaming | 25 | `lightningStrikeQuick`, `coinCollectSingle`, `coinCollectJackpot`, `swordSlashHeavy`, `explosionMassive`, `machineGun` |
+| Educational | 77 | `achievementUnlocked`, `levelUp`, `starRating`, `badgeEarned`, `perfectScore`, `lessonComplete` |
+| UI Interaction | 41 | `doubleTapLike`, `messageSent`, `notificationPop`, `pullToRefresh`, `toggleSwitch`, `swipeAction` |
+| Special Effect | 12 | `magicSparkle`, `waterDrop`, `specialEarthquake`, `laserBeam`, `typewriter`, `heartbeat` |
+| Wellness | 8 | `breathingGuide`, `calmPulse`, `meditationBell`, `relaxationWave`, `zenNotification`, `timeWarning30s` |
+| Productivity | 5 | `timerComplete`, `taskCheck`, `focusStart`, `breakReminder`, `productivityFocusReminder` |
+| Finance | 4 | `paymentSuccess`, `paymentProcessing`, `transactionAlert`, `receiptSaved` |
+| Emotional | 5 | `excitementBuild`, `disappointment`, `surprise`, `joy`, `anticipation` |
+| Intense Gamification | 33 | `fireBurst`, `iceShard`, `earthquakeRumble`, `windTornado`, `thunderStorm`, `meteorImpact` |
+| Ratings & Feedback | 4 | `starRating1`, `starRating3`, `starRating5`, `socialNotification` |
+| Tools & Writing | 2 | `pencilWrite`, `eraserUse` |
+
+```ts
+Presets.paymentSuccess();
+Presets.pullToRefresh();
+Presets.fireBurst({ duration: 0.9 });
+Haptics.play('breathingGuide');
+```
+
+Use `patternNames` and `patternMetadata` to inspect the full generated catalog at runtime.
+
 ## Example App
 
 The repository includes a runnable React Native app in `example/` for trying every generated pattern on device.
@@ -46,7 +74,7 @@ npm run example:android:assemble
 # equivalent to: cd example/android && ./gradlew :app:assembleDebug
 ```
 
-The example screen lists all 225 presets, supports search and category filtering, and includes controls for `prepare`, `stop`, and `setEnabled`.
+The example app starts with haptic categories. Open a category to search, prepare, and play the presets in that group.
 
 ## API
 
@@ -56,23 +84,6 @@ The example screen lists all 225 presets, supports search and category filtering
 - `Haptics.setEnabled(enabled)` toggles playback.
 - `Haptics.isSupported()` reports whether native haptic playback is available.
 - `Presets.<patternName>(options?)` exposes generated functions for every bundled haptic preset.
-
-## Preset Categories
-
-- Basic Haptics - UIKit Feedback Generators
-- Gaming
-- Educational
-- UI Interaction
-- Special Effect
-- Wellness
-- Productivity
-- Finance
-- Emotional
-- Intense Gamification
-- Ratings & Feedback
-- Tools & Writing
-
-Use `patternNames` and `patternMetadata` to inspect the generated catalog at runtime.
 
 ## Platform Notes
 
