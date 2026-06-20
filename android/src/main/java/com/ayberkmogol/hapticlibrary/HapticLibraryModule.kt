@@ -1,6 +1,5 @@
 package com.ayberkmogol.hapticlibrary
 
-import com.facebook.fbreact.specs.NativeHapticLibrarySpec
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReactApplicationContext
