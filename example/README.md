@@ -26,4 +26,4 @@ npm run example:ios
 npm run example:android:assemble
 ```
 
-The app lists all generated haptic presets, lets you search/filter by category, and plays a preset when you tap a row.
+The app starts with haptic categories. Open a category to search, prepare, and play the presets in that group.
