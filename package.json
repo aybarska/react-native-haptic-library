@@ -38,8 +38,16 @@
     "type": "git",
     "url": "git+https://github.com/ayberkmogol/react-native-haptic-library.git"
   },
+  "homepage": "https://github.com/ayberkmogol/react-native-haptic-library#readme",
+  "bugs": {
+    "url": "https://github.com/ayberkmogol/react-native-haptic-library/issues"
+  },
   "author": "Ayberk Mogol",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "sideEffects": false,
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
