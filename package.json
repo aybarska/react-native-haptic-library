@@ -21,6 +21,12 @@
   ],
   "scripts": {
     "build": "bob build",
+    "example:android": "npm --prefix example run android",
+    "example:android:assemble": "npm --prefix example run android:assemble",
+    "example:ios": "npm --prefix example run ios",
+    "example:start": "npm --prefix example run start",
+    "example:test": "npm --prefix example run test -- --runInBand",
+    "example:typecheck": "npm --prefix example run typecheck",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",

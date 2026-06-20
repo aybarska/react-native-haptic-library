@@ -25,6 +25,29 @@ Haptics.setEnabled(true);
 Haptics.stop();
 ```
 
+## Example App
+
+The repository includes a runnable React Native app in `example/` for trying every generated pattern on device.
+
+```sh
+npm install
+npm --prefix example install
+
+npm run example:start
+npm run example:android
+# or
+npm run example:ios
+```
+
+The Android Gradle wrapper lives in the example app, which is the normal place for a React Native library consumer build:
+
+```sh
+npm run example:android:assemble
+# equivalent to: cd example/android && ./gradlew :app:assembleDebug
+```
+
+The example screen lists all 225 presets, supports search and category filtering, and includes controls for `prepare`, `stop`, and `setEnabled`.
+
 ## API
 
 - `Haptics.play(name, options?)` plays any generated preset by name.
@@ -60,3 +83,5 @@ The iOS implementation routes preset names to native UIKit feedback generators a
 ### Android
 
 Android does not expose CoreHaptics, so presets are mapped to best-effort `VibrationEffect` patterns. The engine prefers predefined system effects for basic feedback, primitive composition on Android 11+ when possible, amplitude waveforms on Android 8+, and timing waveforms as a final fallback. Device hardware variance means Android output will feel similar in intent rather than identical to iOS.
+
+This package intentionally does not ship a root-level Gradle wrapper. The Android library is compiled by the consuming React Native application; this repo's `example/android/gradlew` is provided for local development and verification.

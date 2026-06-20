@@ -1,0 +1,11 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "react-native-haptic-library": ["../src/index"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../src/**/*.ts"],
+  "exclude": ["**/node_modules", "**/Pods"]
+}
