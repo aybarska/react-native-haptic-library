@@ -21,6 +21,11 @@ jest.mock('../NativeHapticLibrary', () => ({
 
 import { Haptics, Presets, patternNames } from '../index';
 
+const generatedAndroidPatterns = require('../../generated/swiftful-haptics.patterns.json') as {
+  patterns: Array<{ name: string }>;
+  errors: Array<{ name: string; error: string }>;
+};
+
 describe('react-native-haptic-library', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -46,5 +51,17 @@ describe('react-native-haptic-library', () => {
   it('routes generated presets to the native module', () => {
     Presets.coinCollectSingle({ duration: 0.2 });
     expect(mockNative.RNHapticLibrary_play).toHaveBeenCalledWith('coinCollectSingle', JSON.stringify({ duration: 0.2 }));
+  });
+
+  it('generates Android pattern data for every CoreHaptics preset', () => {
+    const basicPatterns = new Set(['selection', 'soft', 'rigid', 'light', 'medium', 'heavy', 'success', 'error', 'warning']);
+    const androidPatternNames = new Set(generatedAndroidPatterns.patterns.map((pattern) => pattern.name));
+
+    expect(generatedAndroidPatterns.errors).toEqual([]);
+    for (const name of patternNames) {
+      if (!basicPatterns.has(name)) {
+        expect(androidPatternNames.has(name)).toBe(true);
+      }
+    }
   });
 });

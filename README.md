@@ -96,3 +96,13 @@ The iOS implementation routes preset names to native UIKit feedback generators a
 Android playback uses `VibrationEffect` equivalents for the bundled preset catalog. The engine prefers predefined system effects for basic feedback, primitive composition on Android 11+ when possible, amplitude waveforms on Android 8+, and timing waveforms as a final fallback. Device hardware variance means Android output can vary across manufacturers and OS versions.
 
 This package intentionally does not ship a root-level Gradle wrapper. The Android library is compiled by the consuming React Native application; this repo's `example/android/gradlew` is provided for local development and verification.
+
+## Development
+
+Android preset data is generated from the vendored iOS CoreHaptics catalog:
+
+```sh
+npm run generate:android-patterns
+```
+
+The command compiles the Swift pattern catalog, exports each CoreHaptics pattern, writes `generated/swiftful-haptics.patterns.json`, and refreshes the Android Kotlin catalog.

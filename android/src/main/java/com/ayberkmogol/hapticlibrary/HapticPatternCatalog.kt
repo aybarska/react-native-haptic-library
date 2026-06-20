@@ -4,6 +4,7 @@ import org.json.JSONObject
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.roundToLong
 
 object HapticPatternCatalog {
   private val definitions: Map<String, PatternDefinition> = mapOf(
@@ -239,8 +240,32 @@ object HapticPatternCatalog {
   fun pattern(name: String, optionsJson: String): HapticBlueprint? {
     val definition = definitions[name.lowercase()] ?: return null
     val options = runCatching { JSONObject(optionsJson.ifBlank { "{}" }) }.getOrDefault(JSONObject())
+    val generated = GeneratedHapticPatternCatalog.pattern(definition.name)
+    if (generated != null) {
+      return scaleGeneratedPattern(definition.name, generated, options)
+    }
     return buildPattern(definition, options)
   }
+
+  private fun scaleGeneratedPattern(name: String, pattern: HapticBlueprint, options: JSONObject): HapticBlueprint {
+    val explicitDuration = options.optDouble("duration", Double.NaN)
+    if (explicitDuration.isNaN()) return pattern
+
+    val defaultDuration = GeneratedHapticPatternCatalog.defaultDurationMillis(name) ?: return pattern
+    if (defaultDuration <= 0L) return pattern
+
+    val targetDuration = max(30L, (explicitDuration * 1000.0).roundToLong())
+    val scale = targetDuration.toDouble() / defaultDuration.toDouble()
+    return HapticBlueprint(
+      envelope = TextureEnvelope(
+        amplitude = pattern.envelope.amplitude.map { it.copy(time = scaleTime(it.time, scale)) },
+        frequency = pattern.envelope.frequency.map { it.copy(time = scaleTime(it.time, scale)) }
+      ),
+      impacts = pattern.impacts.map { it.copy(time = scaleTime(it.time, scale)) }
+    )
+  }
+
+  private fun scaleTime(time: Long, scale: Double): Long = max(0L, (time.toDouble() * scale).roundToLong())
 
   private fun buildPattern(definition: PatternDefinition, options: JSONObject): HapticBlueprint {
     val durationMs = durationMillis(definition, options)
