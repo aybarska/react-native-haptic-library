@@ -39,6 +39,27 @@ struct SpecialEffectHapticPatterns {
         
         return events
     }
+
+    static func bellToll(duration: Double) -> [CHHapticEvent] {
+        let baseDuration = 0.399
+        let scale = duration > 0 ? duration / baseDuration : 1
+        let points: [(time: Double, intensity: Float, sharpness: Float)] = [
+            (0.010, 1.0, 0.903),
+            (0.201, 1.0, 0.513),
+            (0.399, 0.997, 0.147)
+        ]
+
+        return points.map { point in
+            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: point.intensity)
+            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: point.sharpness)
+
+            return CHHapticEvent(
+                eventType: .hapticTransient,
+                parameters: [intensity, sharpness],
+                relativeTime: point.time * scale
+            )
+        }
+    }
     
     static func waterDropEvents(duration: Double) -> [CHHapticEvent] {
         // Initial drop impact

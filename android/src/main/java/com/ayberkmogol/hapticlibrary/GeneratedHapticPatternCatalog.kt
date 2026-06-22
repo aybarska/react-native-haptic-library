@@ -2833,6 +2833,20 @@ object GeneratedHapticPatternCatalog {
         )
       )
     ),
+    "belltoll" to GeneratedPattern(
+      defaultDurationMillis = 399L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = emptyList(),
+          frequency = emptyList()
+        ),
+        impacts = listOf(
+          HapticKeyframe(10L, 1.0f, 0.903f),
+          HapticKeyframe(201L, 1.0f, 0.513f),
+          HapticKeyframe(399L, 0.997f, 0.147f)
+        )
+      )
+    ),
     "waterdrop" to GeneratedPattern(
       defaultDurationMillis = 600L,
       data = HapticBlueprint(

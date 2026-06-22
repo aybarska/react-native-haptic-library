@@ -463,6 +463,9 @@ export const Presets = {
   magicSparkle: (options?: HapticOptions) => {
     Native.play('magicSparkle', normalizeOptions(options));
   },
+  bellToll: (options?: HapticOptions) => {
+    Native.play('bellToll', normalizeOptions(options));
+  },
   waterDrop: (options?: HapticOptions) => {
     Native.play('waterDrop', normalizeOptions(options));
   },

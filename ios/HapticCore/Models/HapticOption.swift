@@ -209,9 +209,10 @@ public enum HapticOption: Sendable {
     case sliderValueChange(duration: Double = 0.06)
     case pop(duration: Double = 0.2)
 
-    // MARK: - Special Effect Haptics (12)
+    // MARK: - Special Effect Haptics (13)
 
     case magicSparkle(duration: Double = 1.2)
+    case bellToll(duration: Double = 0.399)
     case waterDrop(duration: Double = 0.6)
     case specialEarthquake(duration: Double = 2.5)  // Renamed from earthquake to avoid conflict
     case laserBeam(duration: Double = 0.8)
@@ -654,6 +655,8 @@ extension HapticOption {
         // MARK: Special Effect Patterns
         case .magicSparkle(let duration):
             return try CHHapticPattern(events: SpecialEffectHapticPatterns.magicSparkle(duration: duration), parameters: [])
+        case .bellToll(let duration):
+            return try CHHapticPattern(events: SpecialEffectHapticPatterns.bellToll(duration: duration), parameters: [])
         case .waterDrop(let duration):
             return try CHHapticPattern(events: SpecialEffectHapticPatterns.waterDropEvents(duration: duration),
                                       parameterCurves: SpecialEffectHapticPatterns.waterDropCurves(duration: duration))
@@ -1039,6 +1042,7 @@ extension HapticOption {
             
         // Special Effect
         case .magicSparkle: return "magicSparkle"
+        case .bellToll: return "bellToll"
         case .waterDrop: return "waterDrop"
         case .specialEarthquake: return "specialEarthquake"
         case .laserBeam: return "laserBeam"

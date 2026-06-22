@@ -6151,6 +6151,31 @@
       ]
     },
     {
+      "name": "bellToll",
+      "durationMillis": 399,
+      "envelope": {
+        "amplitude": [],
+        "frequency": []
+      },
+      "impacts": [
+        {
+          "time": 10,
+          "amplitude": 1,
+          "frequency": 0.902999997138977
+        },
+        {
+          "time": 201,
+          "amplitude": 1,
+          "frequency": 0.5130000114440918
+        },
+        {
+          "time": 399,
+          "amplitude": 0.996999979019165,
+          "frequency": 0.1469999998807907
+        }
+      ]
+    },
+    {
       "name": "waterDrop",
       "durationMillis": 600,
       "envelope": {

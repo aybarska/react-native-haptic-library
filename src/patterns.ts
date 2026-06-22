@@ -155,6 +155,7 @@ export const patternNames = [
   "sliderValueChange",
   "pop",
   "magicSparkle",
+  "bellToll",
   "waterDrop",
   "specialEarthquake",
   "laserBeam",
@@ -1142,6 +1143,12 @@ export const patternMetadata: Record<HapticPatternName, HapticPatternMetadata> =
     "category": "Special Effect",
     "options": {
       "duration": "1.2"
+    }
+  },
+  "bellToll": {
+    "category": "Special Effect",
+    "options": {
+      "duration": "0.399"
     }
   },
   "waterDrop": {

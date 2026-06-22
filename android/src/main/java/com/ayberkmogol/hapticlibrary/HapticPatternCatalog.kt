@@ -161,6 +161,7 @@ object HapticPatternCatalog {
         "slidervaluechange" to PatternDefinition("sliderValueChange", "UI Interaction", mapOf("duration" to 0.06)),
         "pop" to PatternDefinition("pop", "UI Interaction", mapOf("duration" to 0.2)),
         "magicsparkle" to PatternDefinition("magicSparkle", "Special Effect", mapOf("duration" to 1.2)),
+        "belltoll" to PatternDefinition("bellToll", "Special Effect", mapOf("duration" to 0.399)),
         "waterdrop" to PatternDefinition("waterDrop", "Special Effect", mapOf("duration" to 0.6)),
         "specialearthquake" to PatternDefinition("specialEarthquake", "Special Effect", mapOf("duration" to 2.5)),
         "laserbeam" to PatternDefinition("laserBeam", "Special Effect", mapOf("duration" to 0.8)),
