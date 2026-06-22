@@ -8,6 +8,10 @@ import App from '../App';
 
 jest.useFakeTimers();
 
+jest.mock('react-native-safe-area-context', () => ({
+  useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
+}));
+
 afterEach(() => {
   ReactTestRenderer.act(() => {
     jest.runOnlyPendingTimers();
@@ -24,6 +28,11 @@ jest.mock(
       coinCollectSingle: { category: 'Gaming', options: { duration: 0.15 } },
       explosionMassive: { category: 'Gaming', options: { duration: 1.8 } },
     };
+    const visualization = {
+      durationMillis: 160,
+      envelope: { amplitude: [], frequency: [] },
+      impacts: [{ time: 0, amplitude: 0.7, frequency: 0.8 }],
+    };
 
     return {
       Haptics: {
@@ -35,6 +44,11 @@ jest.mock(
       },
       patternNames,
       patternMetadata,
+      patternVisualizations: {
+        success: visualization,
+        coinCollectSingle: visualization,
+        explosionMassive: visualization,
+      },
     };
   },
   { virtual: true }

@@ -8,6 +8,7 @@
   "files": [
     "src/index.ts",
     "src/NativeHapticLibrary.ts",
+    "src/pattern-visualizations.ts",
     "src/patterns.ts",
     "src/presets.ts",
     "src/types.ts",
@@ -31,6 +32,7 @@
     "example:test": "npm --prefix example run test -- --runInBand",
     "example:typecheck": "npm --prefix example run typecheck",
     "generate:android-patterns": "node scripts/generate-android-patterns.mjs",
+    "generate:visualizations": "node scripts/generate-visualizations.mjs",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",

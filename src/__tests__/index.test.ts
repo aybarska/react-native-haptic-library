@@ -19,7 +19,7 @@ jest.mock('../NativeHapticLibrary', () => ({
   }),
 }));
 
-import { Haptics, Presets, patternNames } from '../index';
+import { Haptics, Presets, patternNames, patternVisualizations } from '../index';
 
 const generatedAndroidPatterns = require('../../generated/core-haptics.patterns.json') as {
   patterns: Array<{ name: string }>;
@@ -51,6 +51,19 @@ describe('react-native-haptic-library', () => {
   it('routes generated presets to the native module', () => {
     Presets.coinCollectSingle({ duration: 0.2 });
     expect(mockNative.play).toHaveBeenCalledWith('coinCollectSingle', JSON.stringify({ duration: 0.2 }));
+  });
+
+  it('includes the bell toll preset', () => {
+    expect(patternNames).toContain('bellToll');
+    Presets.bellToll();
+    expect(mockNative.play).toHaveBeenCalledWith('bellToll', JSON.stringify({}));
+  });
+
+  it('exports visualization data for every preset', () => {
+    for (const name of patternNames) {
+      expect(patternVisualizations[name]).toBeDefined();
+      expect(patternVisualizations[name].durationMillis).toBeGreaterThan(0);
+    }
   });
 
   it('generates Android pattern data for every CoreHaptics preset', () => {

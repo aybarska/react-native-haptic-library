@@ -1,6 +1,7 @@
 import Native from './NativeHapticLibrary';
 import Presets from './presets';
 import { normalizeOptions, patternMetadata, patternNames } from './patterns';
+import { patternVisualizations } from './pattern-visualizations';
 import type { HapticLibrary, HapticOptions } from './types';
 
 export const Haptics: HapticLibrary = {
@@ -21,7 +22,7 @@ export const Haptics: HapticLibrary = {
   },
 };
 
-export { Presets, patternMetadata, patternNames };
-export type { HapticLibrary, HapticOptions } from './types';
+export { Presets, patternMetadata, patternNames, patternVisualizations };
+export type { HapticLibrary, HapticOptions, HapticVisualization } from './types';
 export type { HapticPatternName } from './patterns';
 export default Haptics;

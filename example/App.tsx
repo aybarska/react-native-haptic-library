@@ -15,8 +15,10 @@ import {
   Haptics,
   patternMetadata,
   patternNames,
+  patternVisualizations,
   type HapticPatternName,
 } from 'react-native-haptic-library';
+import { HapticSignalPreview } from './src/HapticSignalPreview';
 
 type PatternRow = {
   name: HapticPatternName;
@@ -57,6 +59,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [lastPlayed, setLastPlayed] = useState<string>('None');
+  const [playback, setPlayback] = useState<{ name: HapticPatternName; id: number } | null>(null);
 
   const selectedGroup = useMemo(
     () => categoryGroups.find(group => group.name === selectedCategory) ?? null,
@@ -100,6 +103,10 @@ function App() {
   const play = (name: HapticPatternName) => {
     Haptics.play(name);
     setLastPlayed(name);
+    setPlayback(previous => ({
+      name,
+      id: (previous?.id ?? 0) + 1,
+    }));
   };
 
   const renderHeader = () => (
@@ -194,14 +201,27 @@ function App() {
               testID={`pattern-row-${item.name}`}
               style={[styles.row, isDarkMode && styles.rowDark]}>
               <View style={styles.rowText}>
-                <Text style={[styles.patternName, isDarkMode && styles.textDark]}>
-                  {item.name}
-                </Text>
-                <Text style={[styles.patternCategory, isDarkMode && styles.mutedDark]}>
-                  {item.category}
-                </Text>
+                <View style={styles.rowTopLine}>
+                  <View style={styles.rowTitleBlock}>
+                    <Text
+                      numberOfLines={1}
+                      style={[styles.patternName, isDarkMode && styles.textDark]}>
+                      {item.name}
+                    </Text>
+                    <Text
+                      numberOfLines={1}
+                      style={[styles.patternCategory, isDarkMode && styles.mutedDark]}>
+                      {item.category}
+                    </Text>
+                  </View>
+                  <Text style={styles.playText}>Play</Text>
+                </View>
+                <HapticSignalPreview
+                  activeKey={playback?.name === item.name ? playback.id : 0}
+                  isDarkMode={isDarkMode}
+                  visualization={patternVisualizations[item.name]}
+                />
               </View>
-              <Text style={styles.playText}>Play</Text>
             </Pressable>
           )}
         />
@@ -489,14 +509,12 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   row: {
-    alignItems: 'center',
     backgroundColor: '#ffffff',
     borderColor: '#e4e7ec',
     borderRadius: 8,
     borderWidth: 1,
-    flexDirection: 'row',
     marginBottom: 8,
-    minHeight: 64,
+    minHeight: 116,
     paddingHorizontal: 14,
     paddingVertical: 10,
   },
@@ -506,7 +524,14 @@ const styles = StyleSheet.create({
   },
   rowText: {
     flex: 1,
-    paddingRight: 12,
+  },
+  rowTopLine: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 12,
+  },
+  rowTitleBlock: {
+    flex: 1,
   },
   patternName: {
     color: '#101828',
