@@ -17,7 +17,7 @@ import {
   patternNames,
   patternVisualizations,
   type HapticPatternName,
-} from 'react-native-haptic-library';
+} from '@ayberkmogol/react-native-haptic-library';
 import { HapticSignalPreview } from './src/HapticSignalPreview';
 
 type PatternRow = {

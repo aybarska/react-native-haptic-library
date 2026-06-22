@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
-import type { HapticVisualization } from 'react-native-haptic-library';
+import type { HapticVisualization } from '@ayberkmogol/react-native-haptic-library';
 
 const WIDTH = 286;
 const HEIGHT = 152;

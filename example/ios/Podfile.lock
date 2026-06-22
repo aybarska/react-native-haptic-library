@@ -1748,7 +1748,7 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - SocketRocket
-  - react-native-haptic-library (0.1.0):
+  - react-native-haptic-library (0.1.2):
     - React-Core
   - react-native-safe-area-context (5.8.0):
     - boost
@@ -2387,7 +2387,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
-  - react-native-haptic-library (from `../node_modules/react-native-haptic-library`)
+  - "react-native-haptic-library (from `../node_modules/@ayberkmogol/react-native-haptic-library`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-oscompat (from `../node_modules/react-native/ReactCommon/oscompat`)
@@ -2509,7 +2509,7 @@ EXTERNAL SOURCES:
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-haptic-library:
-    :path: "../node_modules/react-native-haptic-library"
+    :path: "../node_modules/@ayberkmogol/react-native-haptic-library"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-NativeModulesApple:
@@ -2616,7 +2616,7 @@ SPEC CHECKSUMS:
   React-logger: 7aef4d74123e5e3d267e5af1fbf5135b5a0d8381
   React-Mapbuffer: 91e0eab42a6ae7f3e34091a126d70fc53bd3823e
   React-microtasksnativemodule: 1ead4fe154df3b1ba34b5a9e35ef3c4bdfa72ccb
-  react-native-haptic-library: 4522336ea11121b8ff451fd62767c450045f45d6
+  react-native-haptic-library: 35829160db169d1cd745ee16d337665534acf9fd
   react-native-safe-area-context: ebd2c2ece5e6e650a6963184039ec8cfd8960d86
   React-NativeModulesApple: eff2eba56030eb0d107b1642b8f853bc36a833ac
   React-oscompat: b12c633e9c00f1f99467b1e0e0b8038895dae436
@@ -2653,4 +2653,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ebf04dbcada2f10b263cc8ce057c525ce30d6947
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.16.1

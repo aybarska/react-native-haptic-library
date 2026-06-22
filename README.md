@@ -1,13 +1,13 @@
-![react-native-haptic-library header](./assets/haptic-header.png)
+![@ayberkmogol/react-native-haptic-library header](./assets/haptic-header.png)
 
-# react-native-haptic-library
+# @ayberkmogol/react-native-haptic-library
 
 A React Native haptic feedback library with a typed preset API, native iOS playback, and Android vibration mappings.
 
 ## Installation
 
 ```sh
-npm install react-native-haptic-library
+npm install @ayberkmogol/react-native-haptic-library
 cd ios && pod install
 ```
 
@@ -16,7 +16,7 @@ React Native autolinking loads the iOS pod and Android Gradle library automatica
 ## Quick Start
 
 ```ts
-import { Haptics, Presets } from 'react-native-haptic-library';
+import { Haptics, Presets } from '@ayberkmogol/react-native-haptic-library';
 
 Presets.success();
 Presets.coinCollectSingle({ duration: 0.15 });

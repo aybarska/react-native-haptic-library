@@ -1,6 +1,6 @@
 # HapticLibraryExample
 
-Runnable React Native example app for `react-native-haptic-library`.
+Runnable React Native example app for `@ayberkmogol/react-native-haptic-library`.
 
 ## Setup
 

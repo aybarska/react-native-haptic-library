@@ -12,9 +12,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@ayberkmogol/react-native-haptic-library": "file:..",
     "react": "19.1.0",
     "react-native": "0.81.1",
-    "react-native-haptic-library": "file:..",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {

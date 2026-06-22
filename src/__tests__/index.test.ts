@@ -40,7 +40,7 @@ const soundEffectPresets = [
   'sonar',
 ] as const;
 
-describe('react-native-haptic-library', () => {
+describe('@ayberkmogol/react-native-haptic-library', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

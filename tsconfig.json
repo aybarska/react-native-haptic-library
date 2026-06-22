@@ -16,7 +16,7 @@
     "types": ["jest", "react-native"],
     "rootDir": ".",
     "paths": {
-      "react-native-haptic-library": ["./src/index"]
+      "@ayberkmogol/react-native-haptic-library": ["./src/index"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

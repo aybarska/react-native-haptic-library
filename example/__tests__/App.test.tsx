@@ -20,7 +20,7 @@ afterEach(() => {
 });
 
 jest.mock(
-  'react-native-haptic-library',
+  '@ayberkmogol/react-native-haptic-library',
   () => {
     const patternNames = ['success', 'coinCollectSingle', 'explosionMassive'];
     const patternMetadata = {
@@ -61,7 +61,7 @@ test('renders correctly', async () => {
 });
 
 test('opens a category before showing its patterns', async () => {
-  const { Haptics } = require('react-native-haptic-library');
+  const { Haptics } = require('@ayberkmogol/react-native-haptic-library');
   let renderer: ReactTestRenderer.ReactTestRenderer;
 
   await ReactTestRenderer.act(() => {

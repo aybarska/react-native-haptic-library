@@ -8,7 +8,7 @@ const config = {
   watchFolders: [root],
   resolver: {
     extraNodeModules: {
-      'react-native-haptic-library': root,
+      '@ayberkmogol/react-native-haptic-library': root,
     },
     nodeModulesPaths: [
       path.resolve(__dirname, 'node_modules'),
