@@ -2,9 +2,9 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import type { HapticVisualization } from 'react-native-haptic-library';
 
-const WIDTH = 176;
-const HEIGHT = 54;
-const SAMPLE_COUNT = 30;
+const WIDTH = 286;
+const HEIGHT = 152;
+const SAMPLE_COUNT = 44;
 
 type Props = {
   activeKey: number;
@@ -14,6 +14,16 @@ type Props = {
 
 function clamp01(value: number) {
   return Math.min(1, Math.max(0, value));
+}
+
+function colorFor(value: number) {
+  if (value >= 0.78) {
+    return '#df4d3f';
+  }
+  if (value >= 0.48) {
+    return '#f0a126';
+  }
+  return '#86b83f';
 }
 
 function valueAt(points: readonly { time: number; value: number }[], time: number) {
@@ -60,7 +70,11 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
     const amplitude = visualization?.envelope.amplitude ?? [];
     return Array.from({ length: SAMPLE_COUNT }, (_, index) => {
       const time = (index / (SAMPLE_COUNT - 1)) * duration;
-      return valueAt(amplitude, time);
+      const value = valueAt(amplitude, time);
+      return {
+        value,
+        color: colorFor(value),
+      };
     });
   }, [duration, visualization]);
 
@@ -69,9 +83,10 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
       (visualization?.impacts ?? []).map(point => ({
         key: `${point.time}-${point.frequency}-${point.amplitude}`,
         left: Math.min(WIDTH - 5, Math.max(0, (point.time / duration) * WIDTH)),
-        height: 10 + clamp01(point.amplitude) * 30,
-        top: 6 + (1 - clamp01(point.amplitude)) * 12,
-        opacity: 0.55 + clamp01(point.frequency) * 0.45,
+        color: colorFor(point.amplitude),
+        height: 22 + clamp01(point.amplitude) * 100,
+        top: 18 + (1 - clamp01(point.amplitude)) * 48,
+        opacity: 0.82 + clamp01(point.frequency) * 0.18,
       })),
     [duration, visualization]
   );
@@ -85,13 +100,24 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
     <View
       accessibilityLabel="Haptic signal preview"
       style={[styles.container, isDarkMode && styles.containerDark]}>
-      {[0, 1, 2, 3].map(index => (
+      {Array.from({ length: 11 }, (_, index) => (
         <View
           key={index}
           style={[
-            styles.gridLine,
+            styles.verticalGridLine,
             isDarkMode && styles.gridLineDark,
-            { left: (index / 3) * WIDTH },
+            { left: (index / 10) * WIDTH },
+          ]}
+        />
+      ))}
+
+      {Array.from({ length: 6 }, (_, index) => (
+        <View
+          key={index}
+          style={[
+            styles.horizontalGridLine,
+            isDarkMode && styles.gridLineDark,
+            { top: (index / 5) * HEIGHT },
           ]}
         />
       ))}
@@ -102,10 +128,10 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
             key={index}
             style={[
               styles.sample,
-              isDarkMode && styles.sampleDark,
               {
-                height: 3 + sample * 18,
-                opacity: sample > 0 ? 0.45 + sample * 0.45 : 0.12,
+                backgroundColor: sample.value > 0 ? sample.color : isDarkMode ? '#2d4150' : '#d8edf7',
+                height: 4 + sample.value * 104,
+                opacity: sample.value > 0 ? 0.58 + sample.value * 0.38 : 0.2,
               },
             ]}
           />
@@ -117,8 +143,8 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
           key={bar.key}
           style={[
             styles.impulse,
-            isDarkMode && styles.impulseDark,
             {
+              backgroundColor: bar.color,
               height: bar.height,
               left: bar.left,
               opacity: bar.opacity,
@@ -127,6 +153,8 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
           ]}
         />
       ))}
+
+      <View style={styles.axisLine} />
 
       {activeKey > 0 ? (
         <Animated.View
@@ -148,7 +176,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     height: HEIGHT,
-    marginTop: 10,
+    marginTop: 12,
     overflow: 'hidden',
     width: WIDTH,
   },
@@ -156,51 +184,59 @@ const styles = StyleSheet.create({
     backgroundColor: '#17212b',
     borderColor: '#2d4150',
   },
-  gridLine: {
+  verticalGridLine: {
     backgroundColor: '#d8edf7',
     bottom: 0,
     position: 'absolute',
     top: 0,
     width: StyleSheet.hairlineWidth,
   },
+  horizontalGridLine: {
+    backgroundColor: '#d8edf7',
+    height: StyleSheet.hairlineWidth,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+  },
   gridLineDark: {
     backgroundColor: '#2d4150',
   },
   sampleRow: {
     alignItems: 'flex-end',
-    bottom: 6,
+    bottom: 0,
     flexDirection: 'row',
-    gap: 2,
-    left: 8,
+    gap: 1,
+    left: 0,
     position: 'absolute',
-    right: 8,
+    right: 0,
   },
   sample: {
-    backgroundColor: '#3aa7c7',
-    borderRadius: 2,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
     flex: 1,
-    minHeight: 3,
-  },
-  sampleDark: {
-    backgroundColor: '#66c7df',
+    minHeight: 4,
   },
   impulse: {
-    backgroundColor: '#1f7a8c',
-    borderRadius: 3,
+    borderRadius: 5,
     position: 'absolute',
-    width: 5,
+    width: 18,
   },
-  impulseDark: {
-    backgroundColor: '#7ed6e6',
+  axisLine: {
+    backgroundColor: '#df4d3f',
+    bottom: 0,
+    height: 4,
+    left: 0,
+    position: 'absolute',
+    right: 0,
   },
   playhead: {
-    backgroundColor: '#ff6b57',
+    backgroundColor: '#1f2937',
     bottom: 0,
     position: 'absolute',
     top: 0,
-    width: 2,
+    width: 3,
   },
   playheadDark: {
-    backgroundColor: '#ff8b74',
+    backgroundColor: '#f8fafc',
   },
 });
