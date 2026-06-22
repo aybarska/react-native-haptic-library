@@ -5,6 +5,8 @@ import type { HapticVisualization } from 'react-native-haptic-library';
 const WIDTH = 286;
 const HEIGHT = 152;
 const SAMPLE_COUNT = 44;
+const VERTICAL_GRID_LINES = Array.from({ length: 11 }, (_, index) => index);
+const HORIZONTAL_GRID_LINES = Array.from({ length: 6 }, (_, index) => index);
 
 type Props = {
   activeKey: number;
@@ -47,7 +49,7 @@ function valueAt(points: readonly { time: number; value: number }[], time: numbe
   return clamp01(points[points.length - 1]!.value);
 }
 
-export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Props) {
+function HapticSignalPreviewComponent({ activeKey, isDarkMode, visualization }: Props) {
   const progress = useRef(new Animated.Value(0)).current;
   const duration = Math.max(30, visualization?.durationMillis ?? 120);
 
@@ -100,7 +102,7 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
     <View
       accessibilityLabel="Haptic signal preview"
       style={[styles.container, isDarkMode && styles.containerDark]}>
-      {Array.from({ length: 11 }, (_, index) => (
+      {VERTICAL_GRID_LINES.map(index => (
         <View
           key={index}
           style={[
@@ -111,7 +113,7 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
         />
       ))}
 
-      {Array.from({ length: 6 }, (_, index) => (
+      {HORIZONTAL_GRID_LINES.map(index => (
         <View
           key={index}
           style={[
@@ -168,6 +170,8 @@ export function HapticSignalPreview({ activeKey, isDarkMode, visualization }: Pr
     </View>
   );
 }
+
+export const HapticSignalPreview = React.memo(HapticSignalPreviewComponent);
 
 const styles = StyleSheet.create({
   container: {

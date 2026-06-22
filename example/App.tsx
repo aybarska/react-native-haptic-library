@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import {
   FlatList,
   Pressable,
@@ -77,6 +77,140 @@ const categoryGroups: CategoryGroup[] = Array.from(
   patterns,
 }));
 
+type HeaderProps = {
+  enabled: boolean;
+  insetsTop: number;
+  isDarkMode: boolean;
+  onSetEnabled: (enabled: boolean) => void;
+};
+
+const AppHeader = memo(function AppHeader({
+  enabled,
+  insetsTop,
+  isDarkMode,
+  onSetEnabled,
+}: HeaderProps) {
+  return (
+    <View
+      style={[
+        styles.header,
+        { paddingTop: insetsTop + 12 },
+        isDarkMode && styles.headerDark,
+      ]}>
+      <Text style={[styles.title, isDarkMode && styles.textDark]}>
+        Haptic Library Example
+      </Text>
+      <Text style={[styles.subtitle, isDarkMode && styles.mutedDark]}>
+        {patternNames.length} patterns in {categoryGroups.length} categories
+      </Text>
+      <View style={styles.headerControls}>
+        <View style={styles.toggleRow}>
+          <Text style={[styles.label, isDarkMode && styles.textDark]}>Enabled</Text>
+          <Switch value={enabled} onValueChange={onSetEnabled} />
+        </View>
+        <Pressable onPress={Haptics.stop} style={styles.stopButton}>
+          <Text style={styles.stopButtonText}>Stop</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+});
+
+type CategoryItemProps = {
+  group: CategoryGroup;
+  isDarkMode: boolean;
+  onOpen: (name: string) => void;
+};
+
+const CategoryItem = memo(function CategoryItem({
+  group,
+  isDarkMode,
+  onOpen,
+}: CategoryItemProps) {
+  const preview = group.patterns
+    .slice(0, 3)
+    .map(pattern => pattern.name)
+    .join(' / ');
+  const visual = categoryVisual(group.name);
+
+  return (
+    <Pressable
+      onPress={() => onOpen(group.name)}
+      testID={`category-card-${group.name}`}
+      style={[styles.categoryCard, isDarkMode && styles.categoryCardDark]}>
+      <View style={[styles.categoryIcon, { backgroundColor: visual.color }]}>
+        <Text style={styles.categoryIconText}>{visual.icon}</Text>
+      </View>
+      <View style={styles.categoryBody}>
+        <View style={styles.categoryTopLine}>
+          <Text
+            numberOfLines={1}
+            style={[styles.categoryTitle, isDarkMode && styles.textDark]}>
+            {group.label}
+          </Text>
+          <View style={[styles.categoryCountPill, isDarkMode && styles.categoryCountPillDark]}>
+            <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
+              {group.patterns.length}
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={[styles.categoryPreview, isDarkMode && styles.mutedDark]}>
+          {preview}
+        </Text>
+      </View>
+      <View style={[styles.chevronCircle, isDarkMode && styles.chevronCircleDark]}>
+        <Text style={styles.chevron}>&gt;</Text>
+      </View>
+    </Pressable>
+  );
+});
+
+type PatternItemProps = {
+  activeKey: number;
+  isDarkMode: boolean;
+  item: PatternRow;
+  onPlay: (name: HapticPatternName) => void;
+};
+
+const PatternItem = memo(function PatternItem({
+  activeKey,
+  isDarkMode,
+  item,
+  onPlay,
+}: PatternItemProps) {
+  return (
+    <Pressable
+      onPress={() => onPlay(item.name)}
+      testID={`pattern-row-${item.name}`}
+      style={[styles.row, isDarkMode && styles.rowDark]}>
+      <View style={styles.rowText}>
+        <View style={styles.rowTopLine}>
+          <View style={styles.rowTitleBlock}>
+            <Text
+              numberOfLines={1}
+              style={[styles.patternName, isDarkMode && styles.textDark]}>
+              {item.name}
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={[styles.patternCategory, isDarkMode && styles.mutedDark]}>
+              {item.category}
+            </Text>
+          </View>
+          <Text style={styles.playText}>Play</Text>
+        </View>
+        <HapticSignalPreview
+          activeKey={activeKey}
+          isDarkMode={isDarkMode}
+          visualization={patternVisualizations[item.name]}
+        />
+      </View>
+    </Pressable>
+  );
+});
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const insets = useSafeAreaInsets();
@@ -102,61 +236,45 @@ function App() {
     return patterns.filter(row => row.name.toLowerCase().includes(normalizedQuery));
   }, [query, selectedGroup]);
 
-  const setEnabled = (nextEnabled: boolean) => {
+  const setEnabled = useCallback((nextEnabled: boolean) => {
     setEnabledState(nextEnabled);
     Haptics.setEnabled(nextEnabled);
-  };
+  }, []);
 
-  const openCategory = (name: string) => {
+  const openCategory = useCallback((name: string) => {
     setQuery('');
     setSelectedCategory(name);
-  };
+  }, []);
 
-  const closeCategory = () => {
+  const closeCategory = useCallback(() => {
     setQuery('');
     setSelectedCategory(null);
-  };
+  }, []);
 
-  const prepareCategory = () => {
+  const prepareCategory = useCallback(() => {
     if (!selectedGroup) {
       return;
     }
 
     Haptics.prepare(selectedGroup.patterns.map(row => row.name));
-  };
+  }, [selectedGroup]);
 
-  const play = (name: HapticPatternName) => {
+  const play = useCallback((name: HapticPatternName) => {
     Haptics.play(name);
     setLastPlayed(name);
     setPlayback(previous => ({
       name,
       id: (previous?.id ?? 0) + 1,
     }));
-  };
+  }, []);
 
-  const renderHeader = () => (
-    <View
-      style={[
-        styles.header,
-        { paddingTop: insets.top + 12 },
-        isDarkMode && styles.headerDark,
-      ]}>
-      <Text style={[styles.title, isDarkMode && styles.textDark]}>
-        Haptic Library Example
-      </Text>
-      <Text style={[styles.subtitle, isDarkMode && styles.mutedDark]}>
-        {patternNames.length} patterns in {categoryGroups.length} categories
-      </Text>
-      <View style={styles.headerControls}>
-        <View style={styles.toggleRow}>
-          <Text style={[styles.label, isDarkMode && styles.textDark]}>Enabled</Text>
-          <Switch value={enabled} onValueChange={setEnabled} />
-        </View>
-        <Pressable onPress={Haptics.stop} style={styles.stopButton}>
-          <Text style={styles.stopButtonText}>Stop</Text>
-        </Pressable>
-      </View>
-    </View>
+  const header = (
+    <AppHeader
+      enabled={enabled}
+      insetsTop={insets.top}
+      isDarkMode={isDarkMode}
+      onSetEnabled={setEnabled}
+    />
   );
 
   if (selectedGroup) {
@@ -171,10 +289,15 @@ function App() {
             styles.detailList,
             { paddingBottom: Math.max(insets.bottom, 20) + 24 },
           ]}
+          initialNumToRender={6}
           keyboardShouldPersistTaps="handled"
+          maxToRenderPerBatch={5}
+          removeClippedSubviews
+          updateCellsBatchingPeriod={40}
+          windowSize={7}
           ListHeaderComponent={
             <>
-              {renderHeader()}
+              {header}
 
               <View style={[styles.detailPanel, isDarkMode && styles.panelDark]}>
                 <View style={styles.detailTopBar}>
@@ -225,33 +348,12 @@ function App() {
             </>
           }
           renderItem={({ item }) => (
-            <Pressable
-              onPress={() => play(item.name)}
-              testID={`pattern-row-${item.name}`}
-              style={[styles.row, isDarkMode && styles.rowDark]}>
-              <View style={styles.rowText}>
-                <View style={styles.rowTopLine}>
-                  <View style={styles.rowTitleBlock}>
-                    <Text
-                      numberOfLines={1}
-                      style={[styles.patternName, isDarkMode && styles.textDark]}>
-                      {item.name}
-                    </Text>
-                    <Text
-                      numberOfLines={1}
-                      style={[styles.patternCategory, isDarkMode && styles.mutedDark]}>
-                      {item.category}
-                    </Text>
-                  </View>
-                  <Text style={styles.playText}>Play</Text>
-                </View>
-                <HapticSignalPreview
-                  activeKey={playback?.name === item.name ? playback.id : 0}
-                  isDarkMode={isDarkMode}
-                  visualization={patternVisualizations[item.name]}
-                />
-              </View>
-            </Pressable>
+            <PatternItem
+              activeKey={playback?.name === item.name ? playback.id : 0}
+              isDarkMode={isDarkMode}
+              item={item}
+              onPlay={play}
+            />
           )}
         />
       </View>
@@ -261,7 +363,7 @@ function App() {
   return (
     <View style={[styles.screen, isDarkMode && styles.screenDark]}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {renderHeader()}
+      {header}
 
       <FlatList
         data={categoryGroups}
@@ -280,42 +382,13 @@ function App() {
             </Text>
           </View>
         }
-        renderItem={({ item }) => {
-          const preview = item.patterns
-            .slice(0, 3)
-            .map(pattern => pattern.name)
-            .join(' / ');
-          const visual = categoryVisual(item.name);
-
-          return (
-            <Pressable
-              onPress={() => openCategory(item.name)}
-              testID={`category-card-${item.name}`}
-              style={[styles.categoryCard, isDarkMode && styles.categoryCardDark]}>
-              <View style={[styles.categoryIcon, { backgroundColor: visual.color }]}>
-                <Text style={styles.categoryIconText}>{visual.icon}</Text>
-              </View>
-              <View style={styles.categoryBody}>
-                <View style={styles.categoryTopLine}>
-                  <Text
-                    numberOfLines={1}
-                    style={[styles.categoryTitle, isDarkMode && styles.textDark]}>
-                    {item.label}
-                  </Text>
-                  <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
-                    {item.patterns.length}
-                  </Text>
-                </View>
-                <Text
-                  numberOfLines={1}
-                  style={[styles.categoryPreview, isDarkMode && styles.mutedDark]}>
-                  {preview}
-                </Text>
-              </View>
-              <Text style={styles.chevron}>&gt;</Text>
-            </Pressable>
-          );
-        }}
+        initialNumToRender={10}
+        maxToRenderPerBatch={8}
+        removeClippedSubviews
+        renderItem={({ item }) => (
+          <CategoryItem group={item} isDarkMode={isDarkMode} onOpen={openCategory} />
+        )}
+        windowSize={9}
       />
     </View>
   );
@@ -382,8 +455,8 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   categoryGrid: {
-    paddingHorizontal: 14,
-    paddingTop: 14,
+    paddingHorizontal: 16,
+    paddingTop: 12,
     paddingBottom: 32,
   },
   sectionHeader: {
@@ -409,11 +482,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: 'row',
-    gap: 12,
-    marginBottom: 12,
-    minHeight: 82,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
+    gap: 14,
+    marginBottom: 10,
+    minHeight: 76,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
   },
   categoryCardDark: {
     backgroundColor: '#1b2027',
@@ -421,16 +494,16 @@ const styles = StyleSheet.create({
   },
   categoryIcon: {
     alignItems: 'center',
-    borderRadius: 8,
-    height: 48,
+    borderRadius: 7,
+    height: 44,
     justifyContent: 'center',
-    width: 48,
+    width: 44,
   },
   categoryIconText: {
     color: '#ffffff',
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '900',
-    lineHeight: 26,
+    lineHeight: 24,
   },
   categoryBody: {
     flex: 1,
@@ -438,30 +511,54 @@ const styles = StyleSheet.create({
   categoryTopLine: {
     alignItems: 'center',
     flexDirection: 'row',
-    gap: 10,
+    gap: 8,
   },
   categoryTitle: {
     color: '#101828',
     flex: 1,
     fontSize: 16,
     fontWeight: '800',
-    lineHeight: 21,
+    lineHeight: 20,
+  },
+  categoryCountPill: {
+    alignItems: 'center',
+    backgroundColor: '#eef6f9',
+    borderRadius: 999,
+    minWidth: 34,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+  },
+  categoryCountPillDark: {
+    backgroundColor: '#25313b',
   },
   categoryCount: {
-    color: '#667085',
-    fontSize: 13,
-    fontWeight: '700',
+    color: '#155e75',
+    fontSize: 12,
+    fontWeight: '800',
+    lineHeight: 15,
   },
   categoryPreview: {
     color: '#667085',
     fontSize: 12,
-    lineHeight: 17,
-    marginTop: 5,
+    lineHeight: 16,
+    marginTop: 6,
+  },
+  chevronCircle: {
+    alignItems: 'center',
+    backgroundColor: '#f1f7fa',
+    borderRadius: 999,
+    height: 28,
+    justifyContent: 'center',
+    width: 28,
+  },
+  chevronCircleDark: {
+    backgroundColor: '#25313b',
   },
   chevron: {
     color: '#1f7a8c',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '900',
+    lineHeight: 18,
   },
   detailPanel: {
     backgroundColor: '#ffffff',
