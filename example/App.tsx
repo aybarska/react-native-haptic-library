@@ -31,6 +31,31 @@ type CategoryGroup = {
   patterns: PatternRow[];
 };
 
+type CategoryVisual = {
+  icon: string;
+  color: string;
+};
+
+const categoryVisuals: Record<string, CategoryVisual> = {
+  'Basic Haptics - UIKit Feedback Generators': { icon: '•', color: '#1f7a8c' },
+  Gaming: { icon: '◆', color: '#7c3aed' },
+  Educational: { icon: '✓', color: '#2563eb' },
+  'UI Interaction': { icon: '⌁', color: '#0891b2' },
+  'Special Effect': { icon: '✦', color: '#db2777' },
+  'Sound Effects': { icon: '≋', color: '#ea580c' },
+  Wellness: { icon: '○', color: '#16a34a' },
+  Productivity: { icon: '▣', color: '#475569' },
+  Finance: { icon: '$', color: '#15803d' },
+  Emotional: { icon: '♥', color: '#e11d48' },
+  'Intense Gamification': { icon: '!', color: '#dc2626' },
+  'Ratings & Feedback': { icon: '★', color: '#ca8a04' },
+  'Tools & Writing': { icon: '✎', color: '#4f46e5' },
+};
+
+function categoryVisual(category: string): CategoryVisual {
+  return categoryVisuals[category] ?? { icon: '•', color: '#64748b' };
+}
+
 const rows: PatternRow[] = patternNames.map(name => ({
   name,
   category: patternMetadata[name].category,
@@ -138,63 +163,67 @@ function App() {
     return (
       <View style={[styles.screen, isDarkMode && styles.screenDark]}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        {renderHeader()}
-
-        <View style={[styles.detailPanel, isDarkMode && styles.panelDark]}>
-          <View style={styles.detailTopBar}>
-            <Pressable
-              accessibilityLabel="Back to categories"
-              onPress={closeCategory}
-              style={[styles.iconButton, isDarkMode && styles.iconButtonDark]}>
-              <Text style={[styles.iconButtonText, isDarkMode && styles.textDark]}>
-                &lt;
-              </Text>
-            </Pressable>
-            <View style={styles.detailTitleBlock}>
-              <Text
-                numberOfLines={1}
-                style={[styles.detailTitle, isDarkMode && styles.textDark]}>
-                {selectedGroup.label}
-              </Text>
-              <Text style={[styles.detailSubtitle, isDarkMode && styles.mutedDark]}>
-                {visiblePatterns.length} / {selectedGroup.patterns.length} patterns
-              </Text>
-            </View>
-          </View>
-
-          <TextInput
-            autoCorrect={false}
-            clearButtonMode="while-editing"
-            onChangeText={setQuery}
-            placeholder="Search this category"
-            placeholderTextColor={isDarkMode ? '#8e99a8' : '#667085'}
-            style={[styles.search, isDarkMode && styles.searchDark]}
-            value={query}
-          />
-
-          <View style={styles.detailActions}>
-            <Pressable
-              onPress={prepareCategory}
-              testID="prepare-category"
-              style={styles.secondaryButton}>
-              <Text style={styles.secondaryButtonText}>Prepare category</Text>
-            </Pressable>
-            <Text
-              numberOfLines={1}
-              style={[styles.lastPlayed, isDarkMode && styles.mutedDark]}>
-              Last played: {lastPlayed}
-            </Text>
-          </View>
-        </View>
 
         <FlatList
           data={visiblePatterns}
           keyExtractor={item => item.name}
           contentContainerStyle={[
-            styles.patternList,
+            styles.detailList,
             { paddingBottom: Math.max(insets.bottom, 20) + 24 },
           ]}
           keyboardShouldPersistTaps="handled"
+          ListHeaderComponent={
+            <>
+              {renderHeader()}
+
+              <View style={[styles.detailPanel, isDarkMode && styles.panelDark]}>
+                <View style={styles.detailTopBar}>
+                  <Pressable
+                    accessibilityLabel="Back to categories"
+                    onPress={closeCategory}
+                    style={[styles.iconButton, isDarkMode && styles.iconButtonDark]}>
+                    <Text style={[styles.iconButtonText, isDarkMode && styles.textDark]}>
+                      &lt;
+                    </Text>
+                  </Pressable>
+                  <View style={styles.detailTitleBlock}>
+                    <Text
+                      numberOfLines={1}
+                      style={[styles.detailTitle, isDarkMode && styles.textDark]}>
+                      {selectedGroup.label}
+                    </Text>
+                    <Text style={[styles.detailSubtitle, isDarkMode && styles.mutedDark]}>
+                      {visiblePatterns.length} / {selectedGroup.patterns.length} patterns
+                    </Text>
+                  </View>
+                </View>
+
+                <TextInput
+                  autoCorrect={false}
+                  clearButtonMode="while-editing"
+                  onChangeText={setQuery}
+                  placeholder="Search this category"
+                  placeholderTextColor={isDarkMode ? '#8e99a8' : '#667085'}
+                  style={[styles.search, isDarkMode && styles.searchDark]}
+                  value={query}
+                />
+
+                <View style={styles.detailActions}>
+                  <Pressable
+                    onPress={prepareCategory}
+                    testID="prepare-category"
+                    style={styles.secondaryButton}>
+                    <Text style={styles.secondaryButtonText}>Prepare category</Text>
+                  </Pressable>
+                  <Text
+                    numberOfLines={1}
+                    style={[styles.lastPlayed, isDarkMode && styles.mutedDark]}>
+                    Last played: {lastPlayed}
+                  </Text>
+                </View>
+              </View>
+            </>
+          }
           renderItem={({ item }) => (
             <Pressable
               onPress={() => play(item.name)}
@@ -237,8 +266,6 @@ function App() {
       <FlatList
         data={categoryGroups}
         keyExtractor={item => item.name}
-        numColumns={2}
-        columnWrapperStyle={styles.categoryRow}
         contentContainerStyle={[
           styles.categoryGrid,
           { paddingBottom: Math.max(insets.bottom, 20) + 24 },
@@ -258,29 +285,34 @@ function App() {
             .slice(0, 3)
             .map(pattern => pattern.name)
             .join(' / ');
+          const visual = categoryVisual(item.name);
 
           return (
             <Pressable
               onPress={() => openCategory(item.name)}
               testID={`category-card-${item.name}`}
               style={[styles.categoryCard, isDarkMode && styles.categoryCardDark]}>
-              <Text
-                numberOfLines={2}
-                style={[styles.categoryTitle, isDarkMode && styles.textDark]}>
-                {item.label}
-              </Text>
-              <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
-                {item.patterns.length} patterns
-              </Text>
-              <Text
-                numberOfLines={2}
-                style={[styles.categoryPreview, isDarkMode && styles.mutedDark]}>
-                {preview}
-              </Text>
-              <View style={styles.categoryFooter}>
-                <Text style={styles.openText}>Open</Text>
-                <Text style={styles.chevron}>&gt;</Text>
+              <View style={[styles.categoryIcon, { backgroundColor: visual.color }]}>
+                <Text style={styles.categoryIconText}>{visual.icon}</Text>
               </View>
+              <View style={styles.categoryBody}>
+                <View style={styles.categoryTopLine}>
+                  <Text
+                    numberOfLines={1}
+                    style={[styles.categoryTitle, isDarkMode && styles.textDark]}>
+                    {item.label}
+                  </Text>
+                  <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
+                    {item.patterns.length}
+                  </Text>
+                </View>
+                <Text
+                  numberOfLines={1}
+                  style={[styles.categoryPreview, isDarkMode && styles.mutedDark]}>
+                  {preview}
+                </Text>
+              </View>
+              <Text style={styles.chevron}>&gt;</Text>
             </Pressable>
           );
         }}
@@ -350,7 +382,8 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   categoryGrid: {
-    padding: 14,
+    paddingHorizontal: 14,
+    paddingTop: 14,
     paddingBottom: 32,
   },
   sectionHeader: {
@@ -369,52 +402,61 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
   },
-  categoryRow: {
-    gap: 12,
-  },
   categoryCard: {
+    alignItems: 'center',
     backgroundColor: '#ffffff',
     borderColor: '#e4e7ec',
     borderRadius: 8,
     borderWidth: 1,
-    flex: 1,
+    flexDirection: 'row',
+    gap: 12,
     marginBottom: 12,
-    minHeight: 150,
-    padding: 14,
+    minHeight: 82,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
   },
   categoryCardDark: {
     backgroundColor: '#1b2027',
     borderColor: '#303846',
   },
+  categoryIcon: {
+    alignItems: 'center',
+    borderRadius: 8,
+    height: 48,
+    justifyContent: 'center',
+    width: 48,
+  },
+  categoryIconText: {
+    color: '#ffffff',
+    fontSize: 22,
+    fontWeight: '900',
+    lineHeight: 26,
+  },
+  categoryBody: {
+    flex: 1,
+  },
+  categoryTopLine: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 10,
+  },
   categoryTitle: {
     color: '#101828',
-    fontSize: 17,
+    flex: 1,
+    fontSize: 16,
     fontWeight: '800',
-    lineHeight: 22,
+    lineHeight: 21,
   },
   categoryCount: {
     color: '#667085',
     fontSize: 13,
     fontWeight: '700',
-    marginTop: 8,
   },
   categoryPreview: {
     color: '#667085',
     fontSize: 12,
     lineHeight: 17,
-    marginTop: 10,
-  },
-  categoryFooter: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginTop: 'auto',
-    paddingTop: 12,
-  },
-  openText: {
-    color: '#1f7a8c',
-    fontSize: 14,
-    fontWeight: '800',
-    marginRight: 6,
+    marginTop: 5,
   },
   chevron: {
     color: '#1f7a8c',
@@ -504,8 +546,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 13,
   },
-  patternList: {
-    padding: 12,
+  detailList: {
     paddingBottom: 32,
   },
   row: {
@@ -514,6 +555,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginBottom: 8,
+    marginHorizontal: 12,
+    marginTop: 8,
     minHeight: 116,
     paddingHorizontal: 14,
     paddingVertical: 10,
