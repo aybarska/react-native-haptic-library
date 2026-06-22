@@ -182,11 +182,18 @@ const PatternItem = memo(function PatternItem({
   item,
   onPlay,
 }: PatternItemProps) {
+  const isActive = activeKey > 0;
+
   return (
     <Pressable
       onPress={() => onPlay(item.name)}
       testID={`pattern-row-${item.name}`}
-      style={[styles.row, isDarkMode && styles.rowDark]}>
+      style={[
+        styles.row,
+        isDarkMode && styles.rowDark,
+        isActive && styles.rowActive,
+        isActive && isDarkMode && styles.rowActiveDark,
+      ]}>
       <View style={styles.rowText}>
         <View style={styles.rowTopLine}>
           <View style={styles.rowTitleBlock}>
@@ -201,13 +208,19 @@ const PatternItem = memo(function PatternItem({
               {item.category}
             </Text>
           </View>
-          <Text style={styles.playText}>Play</Text>
+          <View style={[styles.playButton, isActive && styles.playButtonActive]}>
+            <Text style={[styles.playText, isActive && styles.playTextActive]}>
+              Play
+            </Text>
+          </View>
         </View>
-        <HapticSignalPreview
-          activeKey={activeKey}
-          isDarkMode={isDarkMode}
-          visualization={patternVisualizations[item.name]}
-        />
+        {isActive ? (
+          <HapticSignalPreview
+            activeKey={activeKey}
+            isDarkMode={isDarkMode}
+            visualization={patternVisualizations[item.name]}
+          />
+        ) : null}
       </View>
     </Pressable>
   );
@@ -663,9 +676,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginHorizontal: 12,
     marginTop: 8,
-    minHeight: 116,
+    minHeight: 74,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 12,
+  },
+  rowActive: {
+    borderColor: '#b6dbe7',
+  },
+  rowActiveDark: {
+    borderColor: '#3b7385',
   },
   rowDark: {
     backgroundColor: '#1b2027',
@@ -692,10 +711,25 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 3,
   },
+  playButton: {
+    alignItems: 'center',
+    backgroundColor: '#eef6f9',
+    borderRadius: 999,
+    height: 34,
+    justifyContent: 'center',
+    minWidth: 66,
+    paddingHorizontal: 14,
+  },
+  playButtonActive: {
+    backgroundColor: '#1f7a8c',
+  },
   playText: {
     color: '#1f7a8c',
     fontSize: 14,
     fontWeight: '800',
+  },
+  playTextActive: {
+    color: '#ffffff',
   },
   textDark: {
     color: '#f2f4f7',
