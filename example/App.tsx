@@ -10,7 +10,7 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Haptics,
   patternMetadata,
@@ -52,6 +52,7 @@ const categoryGroups: CategoryGroup[] = Array.from(
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+  const insets = useSafeAreaInsets();
   const [enabled, setEnabledState] = useState(true);
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -102,7 +103,12 @@ function App() {
   };
 
   const renderHeader = () => (
-    <View style={[styles.header, isDarkMode && styles.headerDark]}>
+    <View
+      style={[
+        styles.header,
+        { paddingTop: insets.top + 12 },
+        isDarkMode && styles.headerDark,
+      ]}>
       <Text style={[styles.title, isDarkMode && styles.textDark]}>
         Haptic Library Example
       </Text>
@@ -123,7 +129,7 @@ function App() {
 
   if (selectedGroup) {
     return (
-      <SafeAreaView style={[styles.screen, isDarkMode && styles.screenDark]}>
+      <View style={[styles.screen, isDarkMode && styles.screenDark]}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         {renderHeader()}
 
@@ -177,7 +183,10 @@ function App() {
         <FlatList
           data={visiblePatterns}
           keyExtractor={item => item.name}
-          contentContainerStyle={styles.patternList}
+          contentContainerStyle={[
+            styles.patternList,
+            { paddingBottom: Math.max(insets.bottom, 20) + 24 },
+          ]}
           keyboardShouldPersistTaps="handled"
           renderItem={({ item }) => (
             <Pressable
@@ -196,12 +205,12 @@ function App() {
             </Pressable>
           )}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 
   return (
-    <SafeAreaView style={[styles.screen, isDarkMode && styles.screenDark]}>
+    <View style={[styles.screen, isDarkMode && styles.screenDark]}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {renderHeader()}
 
@@ -210,7 +219,10 @@ function App() {
         keyExtractor={item => item.name}
         numColumns={2}
         columnWrapperStyle={styles.categoryRow}
-        contentContainerStyle={styles.categoryGrid}
+        contentContainerStyle={[
+          styles.categoryGrid,
+          { paddingBottom: Math.max(insets.bottom, 20) + 24 },
+        ]}
         ListHeaderComponent={
           <View style={styles.sectionHeader}>
             <Text style={[styles.sectionTitle, isDarkMode && styles.textDark]}>
@@ -253,7 +265,7 @@ function App() {
           );
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -271,7 +283,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     paddingBottom: 14,
     paddingHorizontal: 20,
-    paddingTop: 12,
   },
   headerDark: {
     backgroundColor: '#1b2027',
