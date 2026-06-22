@@ -466,6 +466,39 @@ export const Presets = {
   bellToll: (options?: HapticOptions) => {
     Native.play('bellToll', normalizeOptions(options));
   },
+  bassDrop: (options?: HapticOptions) => {
+    Native.play('bassDrop', normalizeOptions(options));
+  },
+  breath: (options?: HapticOptions) => {
+    Native.play('breath', normalizeOptions(options));
+  },
+  buzz: (options?: HapticOptions) => {
+    Native.play('buzz', normalizeOptions(options));
+  },
+  dogBark: (options?: HapticOptions) => {
+    Native.play('dogBark', normalizeOptions(options));
+  },
+  flare: (options?: HapticOptions) => {
+    Native.play('flare', normalizeOptions(options));
+  },
+  glitch: (options?: HapticOptions) => {
+    Native.play('glitch', normalizeOptions(options));
+  },
+  guitarStrum: (options?: HapticOptions) => {
+    Native.play('guitarStrum', normalizeOptions(options));
+  },
+  knock: (options?: HapticOptions) => {
+    Native.play('knock', normalizeOptions(options));
+  },
+  passingCar: (options?: HapticOptions) => {
+    Native.play('passingCar', normalizeOptions(options));
+  },
+  powerDown: (options?: HapticOptions) => {
+    Native.play('powerDown', normalizeOptions(options));
+  },
+  sonar: (options?: HapticOptions) => {
+    Native.play('sonar', normalizeOptions(options));
+  },
   waterDrop: (options?: HapticOptions) => {
     Native.play('waterDrop', normalizeOptions(options));
   },

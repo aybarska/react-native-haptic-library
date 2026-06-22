@@ -209,10 +209,21 @@ public enum HapticOption: Sendable {
     case sliderValueChange(duration: Double = 0.06)
     case pop(duration: Double = 0.2)
 
-    // MARK: - Special Effect Haptics (13)
+    // MARK: - Special Effect Haptics (24)
 
     case magicSparkle(duration: Double = 1.2)
     case bellToll(duration: Double = 0.399)
+    case bassDrop(duration: Double = 0.071)
+    case breath(duration: Double = 3.2)
+    case buzz(duration: Double = 0.35)
+    case dogBark(duration: Double = 0.5)
+    case flare(duration: Double = 0.38)
+    case glitch(duration: Double = 0.22)
+    case guitarStrum(duration: Double = 1.4)
+    case knock(duration: Double = 0.76)
+    case passingCar(duration: Double = 1.1)
+    case powerDown(duration: Double = 1.8)
+    case sonar(duration: Double = 2.0)
     case waterDrop(duration: Double = 0.6)
     case specialEarthquake(duration: Double = 2.5)  // Renamed from earthquake to avoid conflict
     case laserBeam(duration: Double = 0.8)
@@ -657,6 +668,28 @@ extension HapticOption {
             return try CHHapticPattern(events: SpecialEffectHapticPatterns.magicSparkle(duration: duration), parameters: [])
         case .bellToll(let duration):
             return try CHHapticPattern(events: SpecialEffectHapticPatterns.bellToll(duration: duration), parameters: [])
+        case .bassDrop(let duration):
+            return try SonicEffectHapticPatterns.bassDrop(duration: duration)
+        case .breath(let duration):
+            return try SonicEffectHapticPatterns.breath(duration: duration)
+        case .buzz(let duration):
+            return try SonicEffectHapticPatterns.buzz(duration: duration)
+        case .dogBark(let duration):
+            return try SonicEffectHapticPatterns.dogBark(duration: duration)
+        case .flare(let duration):
+            return try SonicEffectHapticPatterns.flare(duration: duration)
+        case .glitch(let duration):
+            return try SonicEffectHapticPatterns.glitch(duration: duration)
+        case .guitarStrum(let duration):
+            return try SonicEffectHapticPatterns.guitarStrum(duration: duration)
+        case .knock(let duration):
+            return try SonicEffectHapticPatterns.knock(duration: duration)
+        case .passingCar(let duration):
+            return try SonicEffectHapticPatterns.passingCar(duration: duration)
+        case .powerDown(let duration):
+            return try SonicEffectHapticPatterns.powerDown(duration: duration)
+        case .sonar(let duration):
+            return try SonicEffectHapticPatterns.sonar(duration: duration)
         case .waterDrop(let duration):
             return try CHHapticPattern(events: SpecialEffectHapticPatterns.waterDropEvents(duration: duration),
                                       parameterCurves: SpecialEffectHapticPatterns.waterDropCurves(duration: duration))
@@ -1043,6 +1076,17 @@ extension HapticOption {
         // Special Effect
         case .magicSparkle: return "magicSparkle"
         case .bellToll: return "bellToll"
+        case .bassDrop: return "bassDrop"
+        case .breath: return "breath"
+        case .buzz: return "buzz"
+        case .dogBark: return "dogBark"
+        case .flare: return "flare"
+        case .glitch: return "glitch"
+        case .guitarStrum: return "guitarStrum"
+        case .knock: return "knock"
+        case .passingCar: return "passingCar"
+        case .powerDown: return "powerDown"
+        case .sonar: return "sonar"
         case .waterDrop: return "waterDrop"
         case .specialEarthquake: return "specialEarthquake"
         case .laserBeam: return "laserBeam"

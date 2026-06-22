@@ -26,6 +26,20 @@ const generatedAndroidPatterns = require('../../generated/core-haptics.patterns.
   errors: Array<{ name: string; error: string }>;
 };
 
+const soundEffectPresets = [
+  'bassDrop',
+  'breath',
+  'buzz',
+  'dogBark',
+  'flare',
+  'glitch',
+  'guitarStrum',
+  'knock',
+  'passingCar',
+  'powerDown',
+  'sonar',
+] as const;
+
 describe('react-native-haptic-library', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -57,6 +71,14 @@ describe('react-native-haptic-library', () => {
     expect(patternNames).toContain('bellToll');
     Presets.bellToll();
     expect(mockNative.play).toHaveBeenCalledWith('bellToll', JSON.stringify({}));
+  });
+
+  it('includes imported sound effect presets', () => {
+    for (const name of soundEffectPresets) {
+      expect(patternNames).toContain(name);
+      expect(typeof Presets[name]).toBe('function');
+      expect(patternVisualizations[name]).toBeDefined();
+    }
   });
 
   it('exports visualization data for every preset', () => {

@@ -6185,6 +6185,775 @@ export const patternVisualizations = {
       }
     ]
   },
+  "bassDrop": {
+    "durationMillis": 71,
+    "envelope": {
+      "amplitude": [],
+      "frequency": []
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 1,
+        "frequency": 0.509
+      },
+      {
+        "time": 71,
+        "amplitude": 1,
+        "frequency": 0.069
+      }
+    ]
+  },
+  "breath": {
+    "durationMillis": 3200,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 800,
+          "value": 0.5
+        },
+        {
+          "time": 1600,
+          "value": 0.05
+        },
+        {
+          "time": 2400,
+          "value": 0.5
+        },
+        {
+          "time": 3200,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.15
+        },
+        {
+          "time": 800,
+          "value": 0.25
+        },
+        {
+          "time": 1600,
+          "value": 0.1
+        },
+        {
+          "time": 2400,
+          "value": 0.25
+        },
+        {
+          "time": 3200,
+          "value": 0.15
+        }
+      ]
+    },
+    "impacts": []
+  },
+  "buzz": {
+    "durationMillis": 350,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 5,
+          "value": 0.9
+        },
+        {
+          "time": 100,
+          "value": 0.85
+        },
+        {
+          "time": 150,
+          "value": 0.65
+        },
+        {
+          "time": 250,
+          "value": 0.3
+        },
+        {
+          "time": 350,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.85
+        },
+        {
+          "time": 350,
+          "value": 0.85
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.9,
+        "frequency": 0.85
+      }
+    ]
+  },
+  "dogBark": {
+    "durationMillis": 500,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 5,
+          "value": 0.9
+        },
+        {
+          "time": 50,
+          "value": 0.65
+        },
+        {
+          "time": 120,
+          "value": 0.15
+        },
+        {
+          "time": 200,
+          "value": 0
+        },
+        {
+          "time": 280,
+          "value": 0.85
+        },
+        {
+          "time": 325,
+          "value": 0.6
+        },
+        {
+          "time": 400,
+          "value": 0.12
+        },
+        {
+          "time": 500,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.2
+        },
+        {
+          "time": 500,
+          "value": 0.2
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.9,
+        "frequency": 0.22
+      },
+      {
+        "time": 280,
+        "amplitude": 0.85,
+        "frequency": 0.22
+      }
+    ]
+  },
+  "flare": {
+    "durationMillis": 380,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 20,
+          "value": 0.18
+        },
+        {
+          "time": 60,
+          "value": 0.52
+        },
+        {
+          "time": 90,
+          "value": 0.95
+        },
+        {
+          "time": 100,
+          "value": 1
+        },
+        {
+          "time": 120,
+          "value": 0.75
+        },
+        {
+          "time": 140,
+          "value": 0.65
+        },
+        {
+          "time": 200,
+          "value": 0.35
+        },
+        {
+          "time": 380,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.7
+        },
+        {
+          "time": 60,
+          "value": 0.82
+        },
+        {
+          "time": 100,
+          "value": 0.92
+        },
+        {
+          "time": 200,
+          "value": 0.75
+        },
+        {
+          "time": 380,
+          "value": 0.7
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.2,
+        "frequency": 0.7
+      },
+      {
+        "time": 60,
+        "amplitude": 0.55,
+        "frequency": 0.8
+      },
+      {
+        "time": 100,
+        "amplitude": 1,
+        "frequency": 0.9
+      },
+      {
+        "time": 140,
+        "amplitude": 0.7,
+        "frequency": 0.85
+      },
+      {
+        "time": 200,
+        "amplitude": 0.4,
+        "frequency": 0.75
+      }
+    ]
+  },
+  "glitch": {
+    "durationMillis": 220,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0.9
+        },
+        {
+          "time": 20,
+          "value": 0.1
+        },
+        {
+          "time": 55,
+          "value": 1
+        },
+        {
+          "time": 65,
+          "value": 0
+        },
+        {
+          "time": 100,
+          "value": 0.85
+        },
+        {
+          "time": 118,
+          "value": 0
+        },
+        {
+          "time": 160,
+          "value": 0.95
+        },
+        {
+          "time": 175,
+          "value": 0.15
+        },
+        {
+          "time": 220,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.9
+        },
+        {
+          "time": 20,
+          "value": 0.2
+        },
+        {
+          "time": 55,
+          "value": 1
+        },
+        {
+          "time": 65,
+          "value": 0.1
+        },
+        {
+          "time": 100,
+          "value": 0.88
+        },
+        {
+          "time": 118,
+          "value": 0.15
+        },
+        {
+          "time": 160,
+          "value": 0.92
+        },
+        {
+          "time": 220,
+          "value": 0.9
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.9,
+        "frequency": 0.9
+      },
+      {
+        "time": 30,
+        "amplitude": 0.2,
+        "frequency": 0.3
+      },
+      {
+        "time": 55,
+        "amplitude": 1,
+        "frequency": 0.95
+      },
+      {
+        "time": 70,
+        "amplitude": 0.1,
+        "frequency": 0.2
+      },
+      {
+        "time": 100,
+        "amplitude": 0.85,
+        "frequency": 0.85
+      },
+      {
+        "time": 130,
+        "amplitude": 0.05,
+        "frequency": 0.1
+      },
+      {
+        "time": 160,
+        "amplitude": 0.95,
+        "frequency": 0.9
+      },
+      {
+        "time": 185,
+        "amplitude": 0.3,
+        "frequency": 0.4
+      }
+    ]
+  },
+  "guitarStrum": {
+    "durationMillis": 1400,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 5,
+          "value": 0.9
+        },
+        {
+          "time": 60,
+          "value": 0.65
+        },
+        {
+          "time": 200,
+          "value": 0.45
+        },
+        {
+          "time": 450,
+          "value": 0.28
+        },
+        {
+          "time": 750,
+          "value": 0.14
+        },
+        {
+          "time": 1100,
+          "value": 0.05
+        },
+        {
+          "time": 1400,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.58
+        },
+        {
+          "time": 5,
+          "value": 0.55
+        },
+        {
+          "time": 1400,
+          "value": 0.58
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.9,
+        "frequency": 0.55
+      }
+    ]
+  },
+  "knock": {
+    "durationMillis": 760,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 8,
+          "value": 0.65
+        },
+        {
+          "time": 70,
+          "value": 0.08
+        },
+        {
+          "time": 200,
+          "value": 0
+        },
+        {
+          "time": 280,
+          "value": 0.65
+        },
+        {
+          "time": 348,
+          "value": 0.08
+        },
+        {
+          "time": 480,
+          "value": 0
+        },
+        {
+          "time": 560,
+          "value": 0.65
+        },
+        {
+          "time": 628,
+          "value": 0.08
+        },
+        {
+          "time": 760,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.32
+        },
+        {
+          "time": 760,
+          "value": 0.32
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.65,
+        "frequency": 0.35
+      },
+      {
+        "time": 280,
+        "amplitude": 0.65,
+        "frequency": 0.35
+      },
+      {
+        "time": 560,
+        "amplitude": 0.65,
+        "frequency": 0.35
+      }
+    ]
+  },
+  "passingCar": {
+    "durationMillis": 1100,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 80,
+          "value": 0.1
+        },
+        {
+          "time": 200,
+          "value": 0.35
+        },
+        {
+          "time": 350,
+          "value": 0.75
+        },
+        {
+          "time": 450,
+          "value": 1
+        },
+        {
+          "time": 550,
+          "value": 0.7
+        },
+        {
+          "time": 700,
+          "value": 0.3
+        },
+        {
+          "time": 900,
+          "value": 0.08
+        },
+        {
+          "time": 1100,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.35
+        },
+        {
+          "time": 200,
+          "value": 0.42
+        },
+        {
+          "time": 450,
+          "value": 0.38
+        },
+        {
+          "time": 700,
+          "value": 0.3
+        },
+        {
+          "time": 1100,
+          "value": 0.35
+        }
+      ]
+    },
+    "impacts": []
+  },
+  "powerDown": {
+    "durationMillis": 1800,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0.8
+        },
+        {
+          "time": 200,
+          "value": 0.7
+        },
+        {
+          "time": 450,
+          "value": 0.55
+        },
+        {
+          "time": 750,
+          "value": 0.4
+        },
+        {
+          "time": 1050,
+          "value": 0.25
+        },
+        {
+          "time": 1350,
+          "value": 0.12
+        },
+        {
+          "time": 1600,
+          "value": 0.03
+        },
+        {
+          "time": 1800,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.6
+        },
+        {
+          "time": 1800,
+          "value": 0.6
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.8,
+        "frequency": 0.6
+      }
+    ]
+  },
+  "sonar": {
+    "durationMillis": 2000,
+    "envelope": {
+      "amplitude": [
+        {
+          "time": 0,
+          "value": 0
+        },
+        {
+          "time": 8,
+          "value": 0.35
+        },
+        {
+          "time": 130,
+          "value": 0.04
+        },
+        {
+          "time": 500,
+          "value": 0
+        },
+        {
+          "time": 600,
+          "value": 0.35
+        },
+        {
+          "time": 730,
+          "value": 0.04
+        },
+        {
+          "time": 1100,
+          "value": 0
+        },
+        {
+          "time": 1200,
+          "value": 0.35
+        },
+        {
+          "time": 1330,
+          "value": 0.04
+        },
+        {
+          "time": 1550,
+          "value": 0
+        },
+        {
+          "time": 1620,
+          "value": 0
+        },
+        {
+          "time": 1663,
+          "value": 0.855
+        },
+        {
+          "time": 1700,
+          "value": 0
+        },
+        {
+          "time": 1800,
+          "value": 0.65
+        },
+        {
+          "time": 1855,
+          "value": 0
+        },
+        {
+          "time": 1920,
+          "value": 0.4
+        },
+        {
+          "time": 2000,
+          "value": 0
+        }
+      ],
+      "frequency": [
+        {
+          "time": 0,
+          "value": 0.72
+        },
+        {
+          "time": 1550,
+          "value": 0.72
+        },
+        {
+          "time": 1655,
+          "value": 0.8
+        },
+        {
+          "time": 2000,
+          "value": 0.72
+        }
+      ]
+    },
+    "impacts": [
+      {
+        "time": 0,
+        "amplitude": 0.35,
+        "frequency": 0.7
+      },
+      {
+        "time": 600,
+        "amplitude": 0.35,
+        "frequency": 0.7
+      },
+      {
+        "time": 1200,
+        "amplitude": 0.35,
+        "frequency": 0.7
+      },
+      {
+        "time": 1800,
+        "amplitude": 0.65,
+        "frequency": 0.65
+      },
+      {
+        "time": 1920,
+        "amplitude": 0.4,
+        "frequency": 0.6
+      }
+    ]
+  },
   "waterDrop": {
     "durationMillis": 600,
     "envelope": {

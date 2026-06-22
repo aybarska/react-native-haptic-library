@@ -2847,6 +2847,301 @@ object GeneratedHapticPatternCatalog {
         )
       )
     ),
+    "bassdrop" to GeneratedPattern(
+      defaultDurationMillis = 71L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = emptyList(),
+          frequency = emptyList()
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 1.0f, 0.509f),
+          HapticKeyframe(71L, 1.0f, 0.069f)
+        )
+      )
+    ),
+    "breath" to GeneratedPattern(
+      defaultDurationMillis = 3200L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(800L, 0.5f),
+            EnvelopePoint(1600L, 0.05f),
+            EnvelopePoint(2400L, 0.5f),
+            EnvelopePoint(3200L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.15f),
+            EnvelopePoint(800L, 0.25f),
+            EnvelopePoint(1600L, 0.1f),
+            EnvelopePoint(2400L, 0.25f),
+            EnvelopePoint(3200L, 0.15f)
+          )
+        ),
+        impacts = emptyList()
+      )
+    ),
+    "buzz" to GeneratedPattern(
+      defaultDurationMillis = 350L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(5L, 0.9f),
+            EnvelopePoint(100L, 0.85f),
+            EnvelopePoint(150L, 0.65f),
+            EnvelopePoint(250L, 0.3f),
+            EnvelopePoint(350L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.85f),
+            EnvelopePoint(350L, 0.85f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.9f, 0.85f)
+        )
+      )
+    ),
+    "dogbark" to GeneratedPattern(
+      defaultDurationMillis = 500L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(5L, 0.9f),
+            EnvelopePoint(50L, 0.65f),
+            EnvelopePoint(120L, 0.15f),
+            EnvelopePoint(200L, 0.0f),
+            EnvelopePoint(280L, 0.85f),
+            EnvelopePoint(325L, 0.6f),
+            EnvelopePoint(400L, 0.12f),
+            EnvelopePoint(500L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.2f),
+            EnvelopePoint(500L, 0.2f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.9f, 0.22f),
+          HapticKeyframe(280L, 0.85f, 0.22f)
+        )
+      )
+    ),
+    "flare" to GeneratedPattern(
+      defaultDurationMillis = 380L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(20L, 0.18f),
+            EnvelopePoint(60L, 0.52f),
+            EnvelopePoint(90L, 0.95f),
+            EnvelopePoint(100L, 1.0f),
+            EnvelopePoint(120L, 0.75f),
+            EnvelopePoint(140L, 0.65f),
+            EnvelopePoint(200L, 0.35f),
+            EnvelopePoint(380L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.7f),
+            EnvelopePoint(60L, 0.82f),
+            EnvelopePoint(100L, 0.92f),
+            EnvelopePoint(200L, 0.75f),
+            EnvelopePoint(380L, 0.7f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.2f, 0.7f),
+          HapticKeyframe(60L, 0.55f, 0.8f),
+          HapticKeyframe(100L, 1.0f, 0.9f),
+          HapticKeyframe(140L, 0.7f, 0.85f),
+          HapticKeyframe(200L, 0.4f, 0.75f)
+        )
+      )
+    ),
+    "glitch" to GeneratedPattern(
+      defaultDurationMillis = 220L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.9f),
+            EnvelopePoint(20L, 0.1f),
+            EnvelopePoint(55L, 1.0f),
+            EnvelopePoint(65L, 0.0f),
+            EnvelopePoint(100L, 0.85f),
+            EnvelopePoint(118L, 0.0f),
+            EnvelopePoint(160L, 0.95f),
+            EnvelopePoint(175L, 0.15f),
+            EnvelopePoint(220L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.9f),
+            EnvelopePoint(20L, 0.2f),
+            EnvelopePoint(55L, 1.0f),
+            EnvelopePoint(65L, 0.1f),
+            EnvelopePoint(100L, 0.88f),
+            EnvelopePoint(118L, 0.15f),
+            EnvelopePoint(160L, 0.92f),
+            EnvelopePoint(220L, 0.9f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.9f, 0.9f),
+          HapticKeyframe(30L, 0.2f, 0.3f),
+          HapticKeyframe(55L, 1.0f, 0.95f),
+          HapticKeyframe(70L, 0.1f, 0.2f),
+          HapticKeyframe(100L, 0.85f, 0.85f),
+          HapticKeyframe(130L, 0.05f, 0.1f),
+          HapticKeyframe(160L, 0.95f, 0.9f),
+          HapticKeyframe(185L, 0.3f, 0.4f)
+        )
+      )
+    ),
+    "guitarstrum" to GeneratedPattern(
+      defaultDurationMillis = 1400L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(5L, 0.9f),
+            EnvelopePoint(60L, 0.65f),
+            EnvelopePoint(200L, 0.45f),
+            EnvelopePoint(450L, 0.28f),
+            EnvelopePoint(750L, 0.14f),
+            EnvelopePoint(1100L, 0.05f),
+            EnvelopePoint(1400L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.58f),
+            EnvelopePoint(5L, 0.55f),
+            EnvelopePoint(1400L, 0.58f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.9f, 0.55f)
+        )
+      )
+    ),
+    "knock" to GeneratedPattern(
+      defaultDurationMillis = 760L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(8L, 0.65f),
+            EnvelopePoint(70L, 0.08f),
+            EnvelopePoint(200L, 0.0f),
+            EnvelopePoint(280L, 0.65f),
+            EnvelopePoint(348L, 0.08f),
+            EnvelopePoint(480L, 0.0f),
+            EnvelopePoint(560L, 0.65f),
+            EnvelopePoint(628L, 0.08f),
+            EnvelopePoint(760L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.32f),
+            EnvelopePoint(760L, 0.32f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.65f, 0.35f),
+          HapticKeyframe(280L, 0.65f, 0.35f),
+          HapticKeyframe(560L, 0.65f, 0.35f)
+        )
+      )
+    ),
+    "passingcar" to GeneratedPattern(
+      defaultDurationMillis = 1100L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(80L, 0.1f),
+            EnvelopePoint(200L, 0.35f),
+            EnvelopePoint(350L, 0.75f),
+            EnvelopePoint(450L, 1.0f),
+            EnvelopePoint(550L, 0.7f),
+            EnvelopePoint(700L, 0.3f),
+            EnvelopePoint(900L, 0.08f),
+            EnvelopePoint(1100L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.35f),
+            EnvelopePoint(200L, 0.42f),
+            EnvelopePoint(450L, 0.38f),
+            EnvelopePoint(700L, 0.3f),
+            EnvelopePoint(1100L, 0.35f)
+          )
+        ),
+        impacts = emptyList()
+      )
+    ),
+    "powerdown" to GeneratedPattern(
+      defaultDurationMillis = 1800L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.8f),
+            EnvelopePoint(200L, 0.7f),
+            EnvelopePoint(450L, 0.55f),
+            EnvelopePoint(750L, 0.4f),
+            EnvelopePoint(1050L, 0.25f),
+            EnvelopePoint(1350L, 0.12f),
+            EnvelopePoint(1600L, 0.03f),
+            EnvelopePoint(1800L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.6f),
+            EnvelopePoint(1800L, 0.6f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.8f, 0.6f)
+        )
+      )
+    ),
+    "sonar" to GeneratedPattern(
+      defaultDurationMillis = 2000L,
+      data = HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.0f),
+            EnvelopePoint(8L, 0.35f),
+            EnvelopePoint(130L, 0.04f),
+            EnvelopePoint(500L, 0.0f),
+            EnvelopePoint(600L, 0.35f),
+            EnvelopePoint(730L, 0.04f),
+            EnvelopePoint(1100L, 0.0f),
+            EnvelopePoint(1200L, 0.35f),
+            EnvelopePoint(1330L, 0.04f),
+            EnvelopePoint(1550L, 0.0f),
+            EnvelopePoint(1620L, 0.0f),
+            EnvelopePoint(1663L, 0.855f),
+            EnvelopePoint(1700L, 0.0f),
+            EnvelopePoint(1800L, 0.65f),
+            EnvelopePoint(1855L, 0.0f),
+            EnvelopePoint(1920L, 0.4f),
+            EnvelopePoint(2000L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 0.72f),
+            EnvelopePoint(1550L, 0.72f),
+            EnvelopePoint(1655L, 0.8f),
+            EnvelopePoint(2000L, 0.72f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.35f, 0.7f),
+          HapticKeyframe(600L, 0.35f, 0.7f),
+          HapticKeyframe(1200L, 0.35f, 0.7f),
+          HapticKeyframe(1800L, 0.65f, 0.65f),
+          HapticKeyframe(1920L, 0.4f, 0.6f)
+        )
+      )
+    ),
     "waterdrop" to GeneratedPattern(
       defaultDurationMillis = 600L,
       data = HapticBlueprint(

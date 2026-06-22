@@ -156,6 +156,17 @@ export const patternNames = [
   "pop",
   "magicSparkle",
   "bellToll",
+  "bassDrop",
+  "breath",
+  "buzz",
+  "dogBark",
+  "flare",
+  "glitch",
+  "guitarStrum",
+  "knock",
+  "passingCar",
+  "powerDown",
+  "sonar",
   "waterDrop",
   "specialEarthquake",
   "laserBeam",
@@ -1149,6 +1160,72 @@ export const patternMetadata: Record<HapticPatternName, HapticPatternMetadata> =
     "category": "Special Effect",
     "options": {
       "duration": "0.399"
+    }
+  },
+  "bassDrop": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.071"
+    }
+  },
+  "breath": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "3.2"
+    }
+  },
+  "buzz": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.35"
+    }
+  },
+  "dogBark": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.5"
+    }
+  },
+  "flare": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.38"
+    }
+  },
+  "glitch": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.22"
+    }
+  },
+  "guitarStrum": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "1.4"
+    }
+  },
+  "knock": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "0.76"
+    }
+  },
+  "passingCar": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "1.1"
+    }
+  },
+  "powerDown": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "1.8"
+    }
+  },
+  "sonar": {
+    "category": "Sound Effects",
+    "options": {
+      "duration": "2.0"
     }
   },
   "waterDrop": {
