@@ -148,11 +148,6 @@ const CategoryItem = memo(function CategoryItem({
             style={[styles.categoryTitle, isDarkMode && styles.textDark]}>
             {group.label}
           </Text>
-          <View style={[styles.categoryCountPill, isDarkMode && styles.categoryCountPillDark]}>
-            <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
-              {group.patterns.length}
-            </Text>
-          </View>
         </View>
         <Text
           numberOfLines={1}
@@ -160,8 +155,15 @@ const CategoryItem = memo(function CategoryItem({
           {preview}
         </Text>
       </View>
-      <View style={[styles.chevronCircle, isDarkMode && styles.chevronCircleDark]}>
-        <Text style={styles.chevron}>&gt;</Text>
+      <View style={styles.categoryActionColumn}>
+        <View style={[styles.categoryCountPill, isDarkMode && styles.categoryCountPillDark]}>
+          <Text style={[styles.categoryCount, isDarkMode && styles.mutedDark]}>
+            {group.patterns.length}
+          </Text>
+        </View>
+        <View style={[styles.chevronCircle, isDarkMode && styles.chevronCircleDark]}>
+          <Text style={styles.chevron}>&gt;</Text>
+        </View>
       </View>
     </Pressable>
   );
@@ -507,26 +509,33 @@ const styles = StyleSheet.create({
   },
   categoryBody: {
     flex: 1,
+    minWidth: 0,
   },
   categoryTopLine: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 8,
+    justifyContent: 'center',
+    minHeight: 22,
   },
   categoryTitle: {
     color: '#101828',
-    flex: 1,
     fontSize: 16,
     fontWeight: '800',
     lineHeight: 20,
+  },
+  categoryActionColumn: {
+    alignItems: 'center',
+    flexShrink: 0,
+    gap: 7,
+    justifyContent: 'center',
+    width: 42,
   },
   categoryCountPill: {
     alignItems: 'center',
     backgroundColor: '#eef6f9',
     borderRadius: 999,
-    minWidth: 34,
+    height: 24,
+    justifyContent: 'center',
+    minWidth: 38,
     paddingHorizontal: 8,
-    paddingVertical: 3,
   },
   categoryCountPillDark: {
     backgroundColor: '#25313b',
@@ -547,9 +556,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f1f7fa',
     borderRadius: 999,
-    height: 28,
+    height: 30,
     justifyContent: 'center',
-    width: 28,
+    width: 38,
   },
   chevronCircleDark: {
     backgroundColor: '#25313b',
