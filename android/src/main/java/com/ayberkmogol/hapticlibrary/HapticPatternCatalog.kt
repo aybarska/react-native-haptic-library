@@ -252,11 +252,80 @@ object HapticPatternCatalog {
   fun pattern(name: String, optionsJson: String): HapticBlueprint? {
     val definition = definitions[name.lowercase()] ?: return null
     val options = runCatching { JSONObject(optionsJson.ifBlank { "{}" }) }.getOrDefault(JSONObject())
+    basicPattern(definition.name)?.let { return it }
     val generated = GeneratedHapticPatternCatalog.pattern(definition.name)
     if (generated != null) {
       return scaleGeneratedPattern(definition.name, generated, options)
     }
     return buildPattern(definition, options)
+  }
+
+  private fun basicPattern(name: String): HapticBlueprint? {
+    val pattern = when (name.lowercase()) {
+      "selection" -> basicPulse(duration = 28L, amplitude = 0.18f, frequency = 0.85f)
+      "soft" -> basicPulse(duration = 38L, amplitude = 0.25f, frequency = 0.1f)
+      "light" -> basicPulse(duration = 42L, amplitude = 0.35f, frequency = 0.7f)
+      "medium" -> basicPulse(duration = 58L, amplitude = 0.6f, frequency = 0.5f)
+      "heavy" -> basicPulse(duration = 78L, amplitude = 1.0f, frequency = 0.2f)
+      "rigid" -> HapticBlueprint(
+        envelope = TextureEnvelope(
+          amplitude = listOf(
+            EnvelopePoint(0L, 0.75f),
+            EnvelopePoint(34L, 0.0f),
+            EnvelopePoint(54L, 0.0f),
+            EnvelopePoint(82L, 0.65f),
+            EnvelopePoint(112L, 0.0f)
+          ),
+          frequency = listOf(
+            EnvelopePoint(0L, 1.0f),
+            EnvelopePoint(112L, 1.0f)
+          )
+        ),
+        impacts = listOf(
+          HapticKeyframe(0L, 0.75f, 1.0f),
+          HapticKeyframe(82L, 0.65f, 1.0f)
+        )
+      )
+      "success" -> basicImpulses(
+        HapticKeyframe(0L, 0.4f, 0.5f),
+        HapticKeyframe(110L, 0.8f, 0.5f)
+      )
+      "warning" -> basicImpulses(
+        HapticKeyframe(0L, 0.5f, 0.5f),
+        HapticKeyframe(120L, 0.5f, 0.5f),
+        HapticKeyframe(240L, 0.5f, 0.5f)
+      )
+      "error" -> basicImpulses(
+        HapticKeyframe(0L, 0.8f, 0.3f),
+        HapticKeyframe(100L, 0.5f, 0.3f),
+        HapticKeyframe(200L, 0.8f, 0.3f)
+      )
+      else -> return null
+    }
+    return pattern
+  }
+
+  private fun basicPulse(duration: Long, amplitude: Float, frequency: Float): HapticBlueprint {
+    return HapticBlueprint(
+      envelope = TextureEnvelope(
+        amplitude = listOf(
+          EnvelopePoint(0L, amplitude),
+          EnvelopePoint(duration, 0.0f)
+        ),
+        frequency = listOf(
+          EnvelopePoint(0L, frequency),
+          EnvelopePoint(duration, frequency)
+        )
+      ),
+      impacts = listOf(HapticKeyframe(0L, amplitude, frequency))
+    )
+  }
+
+  private fun basicImpulses(vararg points: HapticKeyframe): HapticBlueprint {
+    return HapticBlueprint(
+      envelope = TextureEnvelope(emptyList(), emptyList()),
+      impacts = points.toList()
+    )
   }
 
   private fun scaleGeneratedPattern(name: String, pattern: HapticBlueprint, options: JSONObject): HapticBlueprint {

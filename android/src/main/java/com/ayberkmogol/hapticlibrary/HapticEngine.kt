@@ -297,8 +297,30 @@ class HapticEngine(private val context: Context) {
 
     for (frame in frames) {
       val intensity = frame.intensity.coerceIn(0f, 1f)
+      val sharpness = frame.sharpness.coerceIn(0f, 1f)
       val duration = frame.duration.coerceAtLeast(1L)
-      append(duration, intensity > 0f)
+      if (intensity <= SILENCE_THRESHOLD) {
+        append(duration, false)
+        continue
+      }
+
+      val minPulse = when {
+        sharpness > 0.66f -> 7L
+        sharpness > 0.33f -> 10L
+        else -> 14L
+      }
+      val maxPulse = when {
+        sharpness > 0.66f -> 24L
+        sharpness > 0.33f -> 34L
+        else -> 44L
+      }
+      val pulseDuration = (minPulse + (maxPulse - minPulse) * intensity)
+        .roundToInt()
+        .toLong()
+        .coerceIn(minPulse, (duration - MIN_OFF_DURATION_MS).coerceAtLeast(minPulse))
+
+      append(pulseDuration, true)
+      append(duration - pulseDuration, false)
     }
     return timings.toLongArray()
   }
@@ -307,6 +329,8 @@ class HapticEngine(private val context: Context) {
     const val TAG = "RNHapticLibrary"
     const val STEP_DURATION_MS = 1000L / 13L
     const val MIN_TRANSITION_DURATION_MS = 15L
+    const val MIN_OFF_DURATION_MS = 8L
+    const val SILENCE_THRESHOLD = 0.04f
   }
 }
 
