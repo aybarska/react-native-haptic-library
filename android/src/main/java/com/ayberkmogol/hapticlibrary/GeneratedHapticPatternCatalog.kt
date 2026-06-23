@@ -69,7 +69,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1650L, 0.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(150L, 0.1f),
+            EnvelopePoint(150L, 0.0f),
             EnvelopePoint(900L, 0.0f),
             EnvelopePoint(1500L, 0.1f),
             EnvelopePoint(1650L, 0.0f)
@@ -182,7 +182,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(180L, 0.6f),
             EnvelopePoint(240L, 1.0f),
             EnvelopePoint(290L, 1.0f),
@@ -207,7 +207,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.4f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(150L, 0.0f),
             EnvelopePoint(170L, 0.3f),
             EnvelopePoint(300L, 0.7f),
@@ -249,7 +249,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(50L, 0.4f),
+            EnvelopePoint(50L, 0.2f),
             EnvelopePoint(320L, 0.6f),
             EnvelopePoint(500L, 1.0f),
             EnvelopePoint(590L, 1.0f),
@@ -421,7 +421,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(225L, 0.5f),
             EnvelopePoint(450L, 1.0f),
             EnvelopePoint(500L, 1.0f),
@@ -446,7 +446,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(100L, 0.4f),
+            EnvelopePoint(100L, 0.3f),
             EnvelopePoint(340L, 0.7f),
             EnvelopePoint(580L, 1.0f)
           ),
@@ -466,13 +466,13 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(100L, 0.3f),
+            EnvelopePoint(100L, 0.1f),
             EnvelopePoint(400L, 0.2f),
             EnvelopePoint(700L, 0.5f),
             EnvelopePoint(900L, 1.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(100L, 0.2f),
+            EnvelopePoint(100L, 0.0f),
             EnvelopePoint(600L, 0.0f),
             EnvelopePoint(900L, 0.5f)
           )
@@ -532,7 +532,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.4f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(240L, 0.4f),
             EnvelopePoint(480L, 0.7f),
             EnvelopePoint(640L, 1.0f)
@@ -723,7 +723,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(100L, 0.5f),
+            EnvelopePoint(100L, 0.3f),
             EnvelopePoint(500L, 0.6f),
             EnvelopePoint(800L, 1.0f)
           ),
@@ -925,7 +925,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(100L, 0.5f),
+            EnvelopePoint(100L, 0.3f),
             EnvelopePoint(420L, 0.6f),
             EnvelopePoint(660L, 1.0f)
           ),
@@ -945,7 +945,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(600L, 0.7f),
+            EnvelopePoint(600L, 0.5f),
             EnvelopePoint(1020L, 0.8f),
             EnvelopePoint(1580L, 0.9f),
             EnvelopePoint(2000L, 0.3f)
@@ -992,7 +992,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(900L, 0.6f),
+            EnvelopePoint(900L, 0.4f),
             EnvelopePoint(1140L, 0.8f),
             EnvelopePoint(1380L, 0.7f),
             EnvelopePoint(1500L, 0.3f)
@@ -1158,7 +1158,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(300L, 0.3f)
+            EnvelopePoint(300L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(300L, 0.2f)
@@ -1213,7 +1213,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(800L, 0.4f)
+            EnvelopePoint(800L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(800L, 0.5f)
@@ -1253,7 +1253,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(450L, 0.3f)
+            EnvelopePoint(450L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(450L, 0.4f)
@@ -1518,7 +1518,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(100L, 0.4f),
+            EnvelopePoint(100L, 0.2f),
             EnvelopePoint(500L, 0.6f),
             EnvelopePoint(800L, 0.8f)
           ),
@@ -1553,7 +1553,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(50L, 0.3f),
+            EnvelopePoint(50L, 0.0f),
             EnvelopePoint(150L, 1.0f),
             EnvelopePoint(170L, 0.8f),
             EnvelopePoint(260L, 0.0f)
@@ -1606,7 +1606,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(50L, 0.5f),
-            EnvelopePoint(450L, 0.5f),
+            EnvelopePoint(450L, 0.4f),
             EnvelopePoint(500L, 0.4f)
           )
         ),
@@ -1638,7 +1638,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(500L, 0.5f)
+            EnvelopePoint(500L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(500L, 0.3f)
@@ -1857,7 +1857,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(240L, 0.5f),
             EnvelopePoint(480L, 1.0f)
           ),
@@ -2103,7 +2103,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(1600L, 0.8f),
+            EnvelopePoint(1600L, 0.6f),
             EnvelopePoint(1720L, 0.9f),
             EnvelopePoint(1880L, 1.0f),
             EnvelopePoint(2000L, 0.4f)
@@ -2182,7 +2182,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(450L, 0.2f)
+            EnvelopePoint(450L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(450L, 0.5f)
@@ -2218,7 +2218,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(240L, 0.0f),
             EnvelopePoint(280L, 0.4f),
             EnvelopePoint(400L, 0.5f),
@@ -2758,7 +2758,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(0L, 1.0f),
-            EnvelopePoint(50L, 0.8f),
+            EnvelopePoint(50L, 0.5f),
             EnvelopePoint(100L, 0.5f),
             EnvelopePoint(150L, 0.5f),
             EnvelopePoint(200L, 0.0f)
@@ -2896,7 +2896,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(0L, 0.85f),
-            EnvelopePoint(350L, 0.85f)
+            EnvelopePoint(350L, 0.8f)
           )
         ),
         impacts = listOf(
@@ -2950,7 +2950,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(60L, 0.82f),
             EnvelopePoint(100L, 0.92f),
             EnvelopePoint(200L, 0.75f),
-            EnvelopePoint(380L, 0.7f)
+            EnvelopePoint(380L, 0.6f)
           )
         ),
         impacts = listOf(
@@ -2985,7 +2985,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(100L, 0.88f),
             EnvelopePoint(118L, 0.15f),
             EnvelopePoint(160L, 0.92f),
-            EnvelopePoint(220L, 0.9f)
+            EnvelopePoint(220L, 0.3f)
           )
         ),
         impacts = listOf(
@@ -3017,7 +3017,7 @@ object GeneratedHapticPatternCatalog {
           frequency = listOf(
             EnvelopePoint(0L, 0.58f),
             EnvelopePoint(5L, 0.55f),
-            EnvelopePoint(1400L, 0.58f)
+            EnvelopePoint(1400L, 0.52f)
           )
         ),
         impacts = listOf(
@@ -3073,7 +3073,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(200L, 0.42f),
             EnvelopePoint(450L, 0.38f),
             EnvelopePoint(700L, 0.3f),
-            EnvelopePoint(1100L, 0.35f)
+            EnvelopePoint(1100L, 0.22f)
           )
         ),
         impacts = emptyList()
@@ -3095,7 +3095,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(0L, 0.6f),
-            EnvelopePoint(1800L, 0.6f)
+            EnvelopePoint(1800L, 0.03f)
           )
         ),
         impacts = listOf(
@@ -3130,7 +3130,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(0L, 0.72f),
             EnvelopePoint(1550L, 0.72f),
             EnvelopePoint(1655L, 0.8f),
-            EnvelopePoint(2000L, 0.72f)
+            EnvelopePoint(2000L, 0.7f)
           )
         ),
         impacts = listOf(
@@ -3166,7 +3166,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.5f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(500L, 0.7f),
             EnvelopePoint(1250L, 0.4f),
             EnvelopePoint(2000L, 0.8f),
@@ -3252,7 +3252,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(280L, 0.5f),
             EnvelopePoint(300L, 0.5f),
             EnvelopePoint(400L, 0.0f)
@@ -3274,7 +3274,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.2f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(600L, 0.3f),
             EnvelopePoint(1400L, 0.6f),
             EnvelopePoint(2000L, 0.9f)
@@ -3297,8 +3297,8 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(265L, 0.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(15L, 0.4f),
-            EnvelopePoint(265L, 0.4f)
+            EnvelopePoint(15L, 0.0f),
+            EnvelopePoint(265L, 0.0f)
           )
         ),
         impacts = listOf(
@@ -3311,12 +3311,12 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 1.0f),
+            EnvelopePoint(0L, 0.0f),
             EnvelopePoint(850L, 0.5f),
             EnvelopePoint(1700L, 0.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(0L, 0.5f),
+            EnvelopePoint(0L, 0.0f),
             EnvelopePoint(1700L, 0.8f)
           )
         ),
@@ -3345,7 +3345,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(1600L, 0.5f),
             EnvelopePoint(2400L, 0.4f),
             EnvelopePoint(4000L, 0.0f)
@@ -3365,16 +3365,16 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(45L, 0.5f),
             EnvelopePoint(150L, 0.1f),
-            EnvelopePoint(617L, 0.3f),
+            EnvelopePoint(617L, 0.1f),
             EnvelopePoint(662L, 0.5f),
             EnvelopePoint(767L, 0.1f),
-            EnvelopePoint(1233L, 0.3f),
+            EnvelopePoint(1233L, 0.1f),
             EnvelopePoint(1278L, 0.5f),
             EnvelopePoint(1383L, 0.1f),
-            EnvelopePoint(1850L, 0.3f),
+            EnvelopePoint(1850L, 0.1f),
             EnvelopePoint(1895L, 0.5f),
             EnvelopePoint(2000L, 0.1f)
           ),
@@ -3417,7 +3417,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.3f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(750L, 0.5f),
             EnvelopePoint(1500L, 0.2f),
             EnvelopePoint(2250L, 0.5f),
@@ -3614,7 +3614,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.2f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(500L, 0.3f),
             EnvelopePoint(1000L, 0.1f),
             EnvelopePoint(1500L, 0.3f),
@@ -3753,7 +3753,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.2f),
+            EnvelopePoint(0L, 0.1f),
             EnvelopePoint(600L, 0.3f),
             EnvelopePoint(1400L, 0.5f),
             EnvelopePoint(2000L, 0.7f)
@@ -3787,7 +3787,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(50L, 0.5f),
-            EnvelopePoint(350L, 0.5f),
+            EnvelopePoint(350L, 0.4f),
             EnvelopePoint(450L, 0.4f),
             EnvelopePoint(500L, 0.4f),
             EnvelopePoint(600L, 0.4f),
@@ -3813,7 +3813,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1500L, 0.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(0L, 1.0f),
+            EnvelopePoint(0L, 0.8f),
             EnvelopePoint(200L, 1.0f),
             EnvelopePoint(300L, 1.0f),
             EnvelopePoint(500L, 0.9f),
@@ -3838,7 +3838,7 @@ object GeneratedHapticPatternCatalog {
         envelope = TextureEnvelope(
           amplitude = listOf(
             EnvelopePoint(0L, 0.4f),
-            EnvelopePoint(300L, 1.0f),
+            EnvelopePoint(300L, 0.8f),
             EnvelopePoint(450L, 1.0f),
             EnvelopePoint(600L, 0.9f),
             EnvelopePoint(750L, 1.0f),
@@ -3881,7 +3881,7 @@ object GeneratedHapticPatternCatalog {
           ),
           frequency = listOf(
             EnvelopePoint(0L, 0.6f),
-            EnvelopePoint(500L, 0.7f),
+            EnvelopePoint(500L, 0.4f),
             EnvelopePoint(650L, 0.7f),
             EnvelopePoint(800L, 0.5f),
             EnvelopePoint(950L, 0.8f),
@@ -3915,7 +3915,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1250L, 0.0f),
             EnvelopePoint(1350L, 0.7f),
             EnvelopePoint(1550L, 0.0f),
-            EnvelopePoint(1800L, 0.9f),
+            EnvelopePoint(1800L, 0.3f),
             EnvelopePoint(2000L, 0.5f),
             EnvelopePoint(2100L, 0.8f),
             EnvelopePoint(2200L, 0.4f),
@@ -3951,7 +3951,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.4f),
+            EnvelopePoint(0L, 0.2f),
             EnvelopePoint(500L, 0.5f),
             EnvelopePoint(800L, 0.7f),
             EnvelopePoint(1000L, 1.0f),
@@ -3985,7 +3985,7 @@ object GeneratedHapticPatternCatalog {
           amplitude = listOf(
             EnvelopePoint(0L, 0.3f),
             EnvelopePoint(300L, 0.0f),
-            EnvelopePoint(400L, 0.9f),
+            EnvelopePoint(400L, 0.7f),
             EnvelopePoint(500L, 1.0f),
             EnvelopePoint(600L, 0.6f),
             EnvelopePoint(700L, 0.9f),
@@ -4026,7 +4026,7 @@ object GeneratedHapticPatternCatalog {
         envelope = TextureEnvelope(
           amplitude = listOf(
             EnvelopePoint(0L, 0.3f),
-            EnvelopePoint(500L, 0.8f),
+            EnvelopePoint(500L, 0.5f),
             EnvelopePoint(600L, 0.7f),
             EnvelopePoint(700L, 0.9f),
             EnvelopePoint(800L, 0.6f),
@@ -4036,12 +4036,12 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1200L, 0.9f),
             EnvelopePoint(1300L, 0.8f),
             EnvelopePoint(1500L, 0.6f),
-            EnvelopePoint(2000L, 0.4f)
+            EnvelopePoint(2000L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(0L, 0.6f),
             EnvelopePoint(500L, 0.7f),
-            EnvelopePoint(2000L, 0.7f)
+            EnvelopePoint(2000L, 0.3f)
           )
         ),
         impacts = listOf(
@@ -4077,7 +4077,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(0L, 0.9f),
             EnvelopePoint(600L, 0.9f),
             EnvelopePoint(700L, 0.9f),
-            EnvelopePoint(1200L, 0.9f),
+            EnvelopePoint(1200L, 0.6f),
             EnvelopePoint(1500L, 0.6f)
           )
         ),
@@ -4096,7 +4096,7 @@ object GeneratedHapticPatternCatalog {
         envelope = TextureEnvelope(
           amplitude = listOf(
             EnvelopePoint(0L, 0.3f),
-            EnvelopePoint(500L, 0.6f),
+            EnvelopePoint(500L, 0.3f),
             EnvelopePoint(700L, 0.5f),
             EnvelopePoint(900L, 0.7f),
             EnvelopePoint(1100L, 0.85f),
@@ -4108,7 +4108,7 @@ object GeneratedHapticPatternCatalog {
           frequency = listOf(
             EnvelopePoint(0L, 0.4f),
             EnvelopePoint(300L, 0.2f),
-            EnvelopePoint(500L, 0.4f),
+            EnvelopePoint(500L, 0.2f),
             EnvelopePoint(600L, 0.3f),
             EnvelopePoint(1000L, 0.1f),
             EnvelopePoint(1500L, 0.2f),
@@ -4138,7 +4138,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(550L, 0.7f),
             EnvelopePoint(650L, 0.95f),
             EnvelopePoint(850L, 0.8f),
-            EnvelopePoint(1000L, 0.4f),
+            EnvelopePoint(1000L, 0.0f),
             EnvelopePoint(1050L, 0.6f),
             EnvelopePoint(1350L, 0.4f)
           ),
@@ -4177,7 +4177,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(850L, 0.2f),
             EnvelopePoint(1000L, 0.5f),
             EnvelopePoint(1150L, 0.0f),
-            EnvelopePoint(1300L, 0.5f)
+            EnvelopePoint(1300L, 0.0f)
           ),
           frequency = listOf(
             EnvelopePoint(850L, 0.5f),
@@ -4201,7 +4201,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(1000L, 0.8f),
+            EnvelopePoint(1000L, 0.5f),
             EnvelopePoint(1200L, 0.7f),
             EnvelopePoint(1400L, 0.85f),
             EnvelopePoint(1500L, 1.0f),
@@ -4211,7 +4211,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(3000L, 0.0f)
           ),
           frequency = listOf(
-            EnvelopePoint(1000L, 0.4f),
+            EnvelopePoint(1000L, 0.3f),
             EnvelopePoint(1300L, 0.5f),
             EnvelopePoint(1600L, 0.4f),
             EnvelopePoint(2000L, 0.3f),
@@ -4232,7 +4232,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(0L, 0.4f),
+            EnvelopePoint(0L, 0.3f),
             EnvelopePoint(300L, 0.6f),
             EnvelopePoint(500L, 0.9f),
             EnvelopePoint(700L, 1.0f),
@@ -4244,11 +4244,11 @@ object GeneratedHapticPatternCatalog {
           frequency = listOf(
             EnvelopePoint(0L, 0.9f),
             EnvelopePoint(700L, 0.9f),
-            EnvelopePoint(850L, 0.6f),
+            EnvelopePoint(850L, 0.5f),
             EnvelopePoint(1050L, 0.8f),
             EnvelopePoint(1250L, 0.4f),
             EnvelopePoint(1450L, 0.7f),
-            EnvelopePoint(1650L, 0.6f),
+            EnvelopePoint(1650L, 0.3f),
             EnvelopePoint(1850L, 0.6f)
           )
         ),
@@ -4273,15 +4273,15 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(800L, 0.95f),
             EnvelopePoint(900L, 1.0f),
             EnvelopePoint(1100L, 0.9f),
-            EnvelopePoint(1200L, 0.3f),
+            EnvelopePoint(1200L, 0.0f),
             EnvelopePoint(1300L, 0.85f),
             EnvelopePoint(1600L, 0.7f)
           ),
           frequency = listOf(
             EnvelopePoint(0L, 0.8f),
             EnvelopePoint(400L, 1.0f),
-            EnvelopePoint(600L, 1.0f),
-            EnvelopePoint(1200L, 0.9f)
+            EnvelopePoint(600L, 0.9f),
+            EnvelopePoint(1200L, 0.4f)
           )
         ),
         impacts = listOf(
@@ -4294,7 +4294,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(800L, 0.8f),
+            EnvelopePoint(800L, 0.7f),
             EnvelopePoint(1000L, 0.5f),
             EnvelopePoint(1100L, 0.2f),
             EnvelopePoint(1200L, 0.9f),
@@ -4456,7 +4456,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1150L, 0.7f),
             EnvelopePoint(1350L, 0.5f),
             EnvelopePoint(1550L, 0.4f),
-            EnvelopePoint(1600L, 0.4f),
+            EnvelopePoint(1600L, 0.0f),
             EnvelopePoint(1750L, 0.3f)
           ),
           frequency = listOf(
@@ -4484,7 +4484,7 @@ object GeneratedHapticPatternCatalog {
         envelope = TextureEnvelope(
           amplitude = listOf(
             EnvelopePoint(800L, 0.3f),
-            EnvelopePoint(1300L, 0.7f),
+            EnvelopePoint(1300L, 0.6f),
             EnvelopePoint(1450L, 0.4f),
             EnvelopePoint(1600L, 0.8f),
             EnvelopePoint(1750L, 0.5f),
@@ -4519,7 +4519,7 @@ object GeneratedHapticPatternCatalog {
           amplitude = listOf(
             EnvelopePoint(0L, 0.5f),
             EnvelopePoint(800L, 0.0f),
-            EnvelopePoint(900L, 0.7f),
+            EnvelopePoint(900L, 0.6f),
             EnvelopePoint(1100L, 0.8f),
             EnvelopePoint(1200L, 0.5f),
             EnvelopePoint(1400L, 0.9f),
@@ -4584,7 +4584,7 @@ object GeneratedHapticPatternCatalog {
           amplitude = listOf(
             EnvelopePoint(0L, 0.7f),
             EnvelopePoint(500L, 0.0f),
-            EnvelopePoint(800L, 0.3f),
+            EnvelopePoint(800L, 0.2f),
             EnvelopePoint(1000L, 0.4f),
             EnvelopePoint(1200L, 0.6f),
             EnvelopePoint(1400L, 0.8f),
@@ -4598,11 +4598,11 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(500L, 0.3f),
             EnvelopePoint(800L, 0.7f),
             EnvelopePoint(1600L, 0.7f),
-            EnvelopePoint(1700L, 0.9f),
+            EnvelopePoint(1700L, 0.6f),
             EnvelopePoint(1900L, 0.8f),
             EnvelopePoint(2100L, 0.5f),
             EnvelopePoint(2300L, 0.9f),
-            EnvelopePoint(2500L, 0.9f),
+            EnvelopePoint(2500L, 0.7f),
             EnvelopePoint(2700L, 0.8f)
           )
         ),
@@ -4636,7 +4636,7 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(1050L, 0.9f),
             EnvelopePoint(1300L, 0.7f),
             EnvelopePoint(1550L, 0.85f),
-            EnvelopePoint(1800L, 0.7f),
+            EnvelopePoint(1800L, 0.6f),
             EnvelopePoint(2500L, 0.6f)
           )
         ),
@@ -4657,7 +4657,7 @@ object GeneratedHapticPatternCatalog {
           amplitude = listOf(
             EnvelopePoint(0L, 0.6f),
             EnvelopePoint(300L, 0.0f),
-            EnvelopePoint(350L, 0.9f),
+            EnvelopePoint(350L, 0.7f),
             EnvelopePoint(450L, 1.0f),
             EnvelopePoint(650L, 0.85f),
             EnvelopePoint(850L, 0.95f),
@@ -4724,7 +4724,7 @@ object GeneratedHapticPatternCatalog {
       data = HapticBlueprint(
         envelope = TextureEnvelope(
           amplitude = listOf(
-            EnvelopePoint(800L, 0.9f),
+            EnvelopePoint(800L, 0.8f),
             EnvelopePoint(950L, 1.0f),
             EnvelopePoint(1100L, 0.7f),
             EnvelopePoint(1250L, 0.95f),
@@ -4801,7 +4801,7 @@ object GeneratedHapticPatternCatalog {
           amplitude = listOf(
             EnvelopePoint(0L, 0.5f),
             EnvelopePoint(400L, 0.0f),
-            EnvelopePoint(450L, 0.7f),
+            EnvelopePoint(450L, 0.6f),
             EnvelopePoint(650L, 0.8f),
             EnvelopePoint(850L, 0.7f),
             EnvelopePoint(1050L, 0.85f),
@@ -4930,8 +4930,8 @@ object GeneratedHapticPatternCatalog {
             EnvelopePoint(0L, 0.5f),
             EnvelopePoint(400L, 0.5f),
             EnvelopePoint(1500L, 0.7f),
-            EnvelopePoint(2000L, 0.7f),
-            EnvelopePoint(2400L, 0.5f),
+            EnvelopePoint(2000L, 0.5f),
+            EnvelopePoint(2400L, 0.3f),
             EnvelopePoint(2500L, 0.3f)
           )
         ),

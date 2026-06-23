@@ -195,8 +195,7 @@ function toMillis(seconds) {
 function dedupeEnvelopePoints(points) {
   const byTime = new Map();
   for (const point of points) {
-    const existing = byTime.get(point.time);
-    byTime.set(point.time, existing == null ? point.value : Math.max(existing, point.value));
+    byTime.set(point.time, point.value);
   }
   return [...byTime.entries()]
     .map(([time, value]) => ({ time, value: clamp01(value) }))
