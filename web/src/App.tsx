@@ -32,7 +32,7 @@ const installCommand = 'npm install @ayberkmogol/react-native-haptic-library';
 type Theme = 'light' | 'dark';
 type Page = 'home' | 'install';
 const heroPatternName = 'bonusPoints';
-const featuredPatternNames = ['success', 'lightningStrikeChain', 'fireBurst', 'paymentSuccess'];
+const featuredPatternNames = ['success', 'lightningStrikeHeavy', 'fireBurst', 'paymentSuccess'];
 
 function formatName(name: string) {
   return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, (match) => match.toUpperCase());
