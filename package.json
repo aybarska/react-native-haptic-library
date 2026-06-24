@@ -36,6 +36,9 @@
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "web:build": "npm --prefix web run build",
+    "web:dev": "npm --prefix web run dev",
+    "web:preview": "npm --prefix web run preview",
     "prepack": "bob build"
   },
   "keywords": [
