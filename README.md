@@ -4,6 +4,12 @@
 
 A React Native haptic feedback library with a typed preset API, native iOS playback, and Android vibration mappings.
 
+## Web Playground
+
+Explore the preset catalog and audition haptic patterns in your browser:
+
+[https://ayberkmogol.dev/react-native-haptic-library/](https://ayberkmogol.dev/react-native-haptic-library/)
+
 ## Installation
 
 ```sh
