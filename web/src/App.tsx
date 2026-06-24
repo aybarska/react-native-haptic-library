@@ -11,7 +11,6 @@ import {
   PackageCheck,
   Play,
   Search,
-  Square,
   Sun,
   Waves,
   Volume2,
@@ -274,11 +273,6 @@ export function App() {
     setSelectedCategory(null);
   }, [audioEngine]);
 
-  const stopPlayback = useCallback(() => {
-    audioEngine.stop();
-    setPlayback(null);
-  }, [audioEngine]);
-
   const playPattern = useCallback(
     async (item: PatternRow) => {
       if (!soundEnabled || !audioSupported) {
@@ -364,9 +358,6 @@ export function App() {
             }
           >
             {soundEnabled ? <Volume2 size={19} /> : <VolumeX size={19} />}
-          </button>
-          <button className="icon-button" type="button" onClick={stopPlayback} title="Stop playback">
-            <Square size={18} />
           </button>
         </div>
       </nav>
