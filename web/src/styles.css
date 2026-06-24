@@ -158,10 +158,7 @@ h2 {
 }
 
 .hero-highlight {
-  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent-cyan);
   white-space: nowrap;
 }
 
