@@ -30,7 +30,9 @@ import {
 
 const installCommand = 'npm install @ayberkmogol/react-native-haptic-library';
 type Theme = 'light' | 'dark';
-const featuredPatternNames = ['success', 'coinCollectJackpot', 'fireBurst', 'paymentSuccess'];
+type Page = 'home' | 'install';
+const heroPatternName = 'bonusPoints';
+const featuredPatternNames = ['success', 'lightningStrikeChain', 'fireBurst', 'paymentSuccess'];
 
 function formatName(name: string) {
   return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, (match) => match.toUpperCase());
@@ -93,9 +95,119 @@ function PatternItem({ activeKey, audioSupported, item, onPlay }: PatternItemPro
   );
 }
 
+function resolvePage(): Page {
+  return window.location.hash === '#/install' ? 'install' : 'home';
+}
+
+function DocsPage() {
+  return (
+    <section className="docs-page">
+      <div className="docs-hero">
+        <p className="eyebrow">Package README</p>
+        <h2>@ayberkmogol/react-native-haptic-library</h2>
+        <p>
+          A React Native haptic feedback library with a typed preset API, native iOS playback,
+          Android vibration mappings, and a browser playground for auditioning tactile signals.
+        </p>
+      </div>
+
+      <div className="docs-grid">
+        <article className="docs-card docs-card-wide">
+          <h3>Installation</h3>
+          <pre className="docs-code"><code>{`${installCommand}
+cd ios && pod install`}</code></pre>
+          <p>
+            React Native autolinking loads the iOS pod and Android Gradle library automatically.
+            Android consumers should allow the merged vibration permission declared by the package.
+          </p>
+        </article>
+
+        <article className="docs-card docs-card-wide">
+          <h3>Quick Start</h3>
+          <pre className="docs-code"><code>{`import { Haptics, Presets } from '@ayberkmogol/react-native-haptic-library';
+
+Presets.success();
+Presets.coinCollectSingle({ duration: 0.15 });
+Haptics.play('explosionMassive', { duration: 1.8 });
+
+Haptics.prepare(['success', 'coinCollectSingle']);
+Haptics.setEnabled(true);
+Haptics.stop();`}</code></pre>
+        </article>
+
+        <article className="docs-card">
+          <h3>API</h3>
+          <ul className="docs-list">
+            <li><code>Haptics.play(name, options?)</code></li>
+            <li><code>Haptics.prepare(name | name[])</code></li>
+            <li><code>Haptics.stop()</code></li>
+            <li><code>Haptics.setEnabled(enabled)</code></li>
+            <li><code>Haptics.isSupported()</code></li>
+            <li><code>Presets.&lt;patternName&gt;(options?)</code></li>
+          </ul>
+        </article>
+
+        <article className="docs-card">
+          <h3>Platform Notes</h3>
+          <p>
+            iOS routes preset names to UIKit feedback generators and CoreHaptics patterns on iOS
+            13+. Android uses vibration equivalents with predefined effects, primitive composition,
+            amplitude waveforms, and timing waveform fallbacks depending on OS support.
+          </p>
+        </article>
+
+        <article className="docs-card docs-card-wide">
+          <h3>Haptic Categories</h3>
+          <div className="docs-table-wrap">
+            <table className="docs-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Count</th>
+                  <th>Example presets</th>
+                </tr>
+              </thead>
+              <tbody>
+                {categoryGroups.map((group) => (
+                  <tr key={group.name}>
+                    <td>{group.label}</td>
+                    <td>{group.patterns.length}</td>
+                    <td>
+                      {group.patterns
+                        .slice(0, 6)
+                        .map((pattern) => pattern.name)
+                        .join(', ')}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article className="docs-card docs-card-wide">
+          <h3>Example App</h3>
+          <pre className="docs-code"><code>{`npm install
+npm --prefix example install
+
+npm run example:start
+npm run example:android
+# or
+npm run example:ios`}</code></pre>
+          <p>
+            The example app starts with haptic categories. Open a category to search, prepare, and
+            play the presets on a real device.
+          </p>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 export function App() {
   const audioEngine = useRef(new HapticAudioEngine()).current;
   const [theme, setTheme] = useState<Theme>('dark');
+  const [page, setPage] = useState<Page>(() => resolvePage());
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [lastPlayed, setLastPlayed] = useState('None');
@@ -107,6 +219,17 @@ export function App() {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
+  useEffect(() => {
+    const syncPage = () => {
+      setPage(resolvePage());
+      setSelectedCategory(null);
+      setQuery('');
+    };
+
+    window.addEventListener('hashchange', syncPage);
+    return () => window.removeEventListener('hashchange', syncPage);
+  }, []);
+
   const selectedGroup = useMemo(
     () => categoryGroups.find((group) => group.name === selectedCategory) ?? null,
     [selectedCategory]
@@ -115,7 +238,7 @@ export function App() {
     () => patternRows.filter((row) => featuredPatternNames.includes(row.name)),
     []
   );
-  const heroPattern = featuredPatterns[0] ?? patternRows[0];
+  const heroPattern = patternRows.find((row) => row.name === heroPatternName) ?? patternRows[0];
 
   const visiblePatterns = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -192,10 +315,10 @@ export function App() {
           </div>
         </div>
         <div className="top-actions">
-          <a className="nav-link" href="#playground">
+          <a className="nav-link" href={page === 'install' ? '#/' : '#playground'}>
             Playground
           </a>
-          <a className="nav-link" href="#install">
+          <a className="nav-link" href="#/install">
             Install
           </a>
           <a
@@ -236,6 +359,7 @@ export function App() {
         </div>
       </nav>
 
+      {page === 'home' ? (
       <section className="hero-section">
         <div className="hero-copy">
           <div className="hero-kicker">
@@ -243,7 +367,10 @@ export function App() {
             <span>Typed presets</span>
             <span>Browser audio previews</span>
           </div>
-          <h2>Design haptic feedback before you touch a device.</h2>
+          <h2>
+            Experience true <span className="hero-highlight">native haptics.</span> Ready-to-use
+            presets with flawless fallbacks for older devices.
+          </h2>
           <p>
             A React Native haptic feedback library with {patternRows.length} named presets,
             native iOS/CoreHaptics playback, Android vibration mappings, and a web playground
@@ -273,7 +400,7 @@ export function App() {
             <span className="console-dot" />
             <code>haptic-preview.ts</code>
           </div>
-          <div className="console-command" id="install">
+          <div className="console-command">
             <Code2 size={18} />
             <code>{installCommand}</code>
             <button
@@ -306,7 +433,12 @@ export function App() {
           />
         </aside>
       </section>
+      ) : null}
 
+      {page === 'install' ? <DocsPage /> : null}
+
+      {page === 'home' ? (
+      <>
       <section className="summary-strip" aria-label="Library summary">
         <div className="summary-item">
           <PackageCheck size={19} />
@@ -410,6 +542,8 @@ export function App() {
           </div>
         </section>
       )}
+      </>
+      ) : null}
     </main>
   );
 }
