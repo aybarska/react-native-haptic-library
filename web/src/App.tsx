@@ -1,13 +1,15 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
   Boxes,
   CheckCircle2,
   Github,
+  Moon,
   PackageCheck,
   Play,
   Search,
   Square,
+  Sun,
   Volume2,
   VolumeX,
 } from 'lucide-react';
@@ -22,6 +24,7 @@ import {
 } from './libraryData';
 
 const installCommand = 'npm install @ayberkmogol/react-native-haptic-library';
+type Theme = 'light' | 'dark';
 
 function formatName(name: string) {
   return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, (match) => match.toUpperCase());
@@ -86,12 +89,17 @@ function PatternItem({ activeKey, audioSupported, item, onPlay }: PatternItemPro
 
 export function App() {
   const audioEngine = useRef(new HapticAudioEngine()).current;
+  const [theme, setTheme] = useState<Theme>('light');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [lastPlayed, setLastPlayed] = useState('None');
   const [playback, setPlayback] = useState<{ name: string; id: number } | null>(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [audioSupported] = useState(() => HapticAudioEngine.isSupported());
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   const selectedGroup = useMemo(
     () => categoryGroups.find((group) => group.name === selectedCategory) ?? null,
@@ -156,6 +164,10 @@ export function App() {
     });
   }, [audioEngine]);
 
+  const toggleTheme = useCallback(() => {
+    setTheme((current) => (current === 'light' ? 'dark' : 'light'));
+  }, []);
+
   return (
     <main className="app-shell">
       <section className="top-bar">
@@ -178,6 +190,14 @@ export function App() {
           >
             <Github size={19} />
           </a>
+          <button
+            className="icon-button"
+            type="button"
+            onClick={toggleTheme}
+            title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+          </button>
           <button
             className={`icon-button${soundEnabled ? ' is-on' : ''}`}
             disabled={!audioSupported}

@@ -475,44 +475,42 @@ h3 {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    background: #111418;
-    color: #f8fafc;
-    --surface: #1b2027;
-    --surface-subtle: #151a21;
-    --border: #303846;
-    --border-strong: #435061;
-    --text: #f8fafc;
-    --muted: #a5b0bf;
-    --signal-idle: #2d4150;
-    --shadow: 0 16px 44px rgb(0 0 0 / 22%);
-  }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  background: #111418;
+  color: #f8fafc;
+  --surface: #1b2027;
+  --surface-subtle: #151a21;
+  --border: #303846;
+  --border-strong: #435061;
+  --text: #f8fafc;
+  --muted: #a5b0bf;
+  --signal-idle: #2d4150;
+  --shadow: 0 16px 44px rgb(0 0 0 / 22%);
+}
 
-  .brand-mark {
-    background: #122d37;
-    border-color: #245767;
-  }
+:root[data-theme='dark'] .brand-mark {
+  background: #122d37;
+  border-color: #245767;
+}
 
-  .summary-strip code {
-    background: #0e141b;
-  }
+:root[data-theme='dark'] .summary-strip code {
+  background: #0e141b;
+}
 
-  .signal-preview {
-    background: #17212b;
-    border-color: #2d4150;
-  }
+:root[data-theme='dark'] .signal-preview {
+  background: #17212b;
+  border-color: #2d4150;
+}
 
-  .signal-grid {
-    background-image:
-      linear-gradient(to right, #2d4150 1px, transparent 1px),
-      linear-gradient(to bottom, #2d4150 1px, transparent 1px);
-  }
+:root[data-theme='dark'] .signal-grid {
+  background-image:
+    linear-gradient(to right, #2d4150 1px, transparent 1px),
+    linear-gradient(to bottom, #2d4150 1px, transparent 1px);
+}
 
-  .signal-playhead {
-    background: #f8fafc;
-  }
+:root[data-theme='dark'] .signal-playhead {
+  background: #f8fafc;
 }
 
 @media (max-width: 900px) {
