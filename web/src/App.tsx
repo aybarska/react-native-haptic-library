@@ -199,6 +199,18 @@ npm run example:ios`}</code></pre>
             play the presets on a real device.
           </p>
         </article>
+
+        <article className="docs-card docs-card-wide">
+          <h3>Credits</h3>
+          <p>
+            Many of the bundled haptic preset ideas and CoreHaptics pattern definitions were
+            adapted from{' '}
+            <a href="https://github.com/SwiftfulThinking/SwiftfulHaptics" rel="noreferrer" target="_blank">
+              SwiftfulHaptics
+            </a>{' '}
+            by SwiftfulThinking, which is available under the MIT license.
+          </p>
+        </article>
       </div>
     </section>
   );

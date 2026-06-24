@@ -108,3 +108,7 @@ npm run generate:android-patterns
 ```
 
 The command compiles the Swift pattern catalog, exports each CoreHaptics pattern, writes `generated/core-haptics.patterns.json`, and refreshes the Android Kotlin catalog.
+
+## Credits
+
+Many of the bundled haptic preset ideas and CoreHaptics pattern definitions were adapted from [SwiftfulHaptics](https://github.com/SwiftfulThinking/SwiftfulHaptics) by SwiftfulThinking, which is available under the MIT license.
