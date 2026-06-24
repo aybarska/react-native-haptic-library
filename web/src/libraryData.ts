@@ -15,28 +15,43 @@ export type CategoryGroup = {
 };
 
 export type CategoryVisual = {
-  icon: string;
+  icon: CategoryIconName;
   color: string;
 };
 
+export type CategoryIconName =
+  | 'tap'
+  | 'gamepad'
+  | 'graduation'
+  | 'cursor'
+  | 'spark'
+  | 'wave'
+  | 'leaf'
+  | 'checklist'
+  | 'wallet'
+  | 'heart'
+  | 'flame'
+  | 'star'
+  | 'pen';
+
 const categoryVisuals: Record<string, CategoryVisual> = {
-  'Basic Haptics - UIKit Feedback Generators': { icon: '•', color: '#1f7a8c' },
-  Gaming: { icon: '◆', color: '#7c3aed' },
-  Educational: { icon: '✓', color: '#2563eb' },
-  'UI Interaction': { icon: '⌁', color: '#0891b2' },
-  'Special Effect': { icon: '✦', color: '#db2777' },
-  'Sound Effects': { icon: '≋', color: '#ea580c' },
-  Wellness: { icon: '○', color: '#16a34a' },
-  Productivity: { icon: '▣', color: '#475569' },
-  Finance: { icon: '$', color: '#15803d' },
-  Emotional: { icon: '♥', color: '#e11d48' },
-  'Intense Gamification': { icon: '!', color: '#dc2626' },
-  'Ratings & Feedback': { icon: '★', color: '#ca8a04' },
-  'Tools & Writing': { icon: '✎', color: '#4f46e5' },
+  'Basic Haptics - UIKit Feedback Generators': { icon: 'tap', color: '#4d918d' },
+  Gaming: { icon: 'gamepad', color: '#8f6376' },
+  Educational: { icon: 'graduation', color: '#4f7f8f' },
+  'UI Interaction': { icon: 'cursor', color: '#6f8f64' },
+  'Special Effect': { icon: 'spark', color: '#b6685d' },
+  'Sound Effects': { icon: 'wave', color: '#c8874f' },
+  Wellness: { icon: 'leaf', color: '#7e9b68' },
+  Productivity: { icon: 'checklist', color: '#6f7480' },
+  Finance: { icon: 'wallet', color: '#6e8f70' },
+  Emotional: { icon: 'heart', color: '#aa606e' },
+  'Intense Gamification': { icon: 'flame', color: '#b8574f' },
+  'Ratings & Feedback': { icon: 'star', color: '#c19a4b' },
+  'Tools & Writing': { icon: 'pen', color: '#6877a7' },
 };
 
 export function getCategoryVisual(category: string): CategoryVisual {
-  return categoryVisuals[category] ?? { icon: '•', color: '#64748b' };
+  return categoryVisuals[category] ?? { icon: 'tap', color: '#64748b' };
 }
 
 export function getCategoryLabel(category: string) {

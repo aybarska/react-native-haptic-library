@@ -3,17 +3,22 @@ import {
   ArrowLeft,
   Boxes,
   CheckCircle2,
+  Code2,
+  Copy,
   Github,
+  Layers3,
   Moon,
   PackageCheck,
   Play,
   Search,
   Square,
   Sun,
+  Waves,
   Volume2,
   VolumeX,
 } from 'lucide-react';
 import { HapticAudioEngine } from './audio/HapticAudioEngine';
+import { CategoryIcon } from './components/CategoryIcon';
 import { HapticSignalPreview } from './components/HapticSignalPreview';
 import {
   categoryGroups,
@@ -25,6 +30,7 @@ import {
 
 const installCommand = 'npm install @ayberkmogol/react-native-haptic-library';
 type Theme = 'light' | 'dark';
+const featuredPatternNames = ['success', 'coinCollectJackpot', 'fireBurst', 'paymentSuccess'];
 
 function formatName(name: string) {
   return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, (match) => match.toUpperCase());
@@ -45,7 +51,7 @@ function CategoryCard({ group, onOpen }: { group: CategoryGroup; onOpen: (name: 
       onClick={() => onOpen(group.name)}
     >
       <span className="category-icon" style={{ backgroundColor: visual.color }}>
-        {visual.icon}
+        <CategoryIcon name={visual.icon} />
       </span>
       <span className="category-copy">
         <span className="category-name">{group.label}</span>
@@ -89,7 +95,7 @@ function PatternItem({ activeKey, audioSupported, item, onPlay }: PatternItemPro
 
 export function App() {
   const audioEngine = useRef(new HapticAudioEngine()).current;
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [lastPlayed, setLastPlayed] = useState('None');
@@ -105,6 +111,11 @@ export function App() {
     () => categoryGroups.find((group) => group.name === selectedCategory) ?? null,
     [selectedCategory]
   );
+  const featuredPatterns = useMemo(
+    () => patternRows.filter((row) => featuredPatternNames.includes(row.name)),
+    []
+  );
+  const heroPattern = featuredPatterns[0] ?? patternRows[0];
 
   const visiblePatterns = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -170,17 +181,23 @@ export function App() {
 
   return (
     <main className="app-shell">
-      <section className="top-bar">
+      <nav className="top-bar" aria-label="Primary navigation">
         <div className="brand-block">
           <span className="brand-mark">
-            <Volume2 size={20} strokeWidth={2.4} />
+            <Waves size={20} strokeWidth={2.4} />
           </span>
           <div>
             <p className="eyebrow">React Native Haptic Library</p>
-            <h1>Presets playground</h1>
+            <h1>HapticLab</h1>
           </div>
         </div>
         <div className="top-actions">
+          <a className="nav-link" href="#playground">
+            Playground
+          </a>
+          <a className="nav-link" href="#install">
+            Install
+          </a>
           <a
             className="icon-button"
             href="https://github.com/ayberkmogol/react-native-haptic-library"
@@ -217,6 +234,77 @@ export function App() {
             <Square size={18} />
           </button>
         </div>
+      </nav>
+
+      <section className="hero-section">
+        <div className="hero-copy">
+          <div className="hero-kicker">
+            <span>Native haptics</span>
+            <span>Typed presets</span>
+            <span>Browser audio previews</span>
+          </div>
+          <h2>Design haptic feedback before you touch a device.</h2>
+          <p>
+            A React Native haptic feedback library with {patternRows.length} named presets,
+            native iOS/CoreHaptics playback, Android vibration mappings, and a web playground
+            that turns each tactile pattern into an audible signal.
+          </p>
+          <div className="hero-actions">
+            <a className="primary-action" href="#playground">
+              <Play size={18} />
+              Explore presets
+            </a>
+            <a
+              className="secondary-action"
+              href="https://github.com/ayberkmogol/react-native-haptic-library"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Github size={18} />
+              View GitHub
+            </a>
+          </div>
+        </div>
+
+        <aside className="hero-console" aria-label="Interactive haptic preview">
+          <div className="console-header">
+            <span className="console-dot" />
+            <span className="console-dot" />
+            <span className="console-dot" />
+            <code>haptic-preview.ts</code>
+          </div>
+          <div className="console-command" id="install">
+            <Code2 size={18} />
+            <code>{installCommand}</code>
+            <button
+              className="copy-button"
+              type="button"
+              onClick={() => void navigator.clipboard?.writeText(installCommand)}
+              title="Copy install command"
+            >
+              <Copy size={16} />
+            </button>
+          </div>
+          <div className="console-preview-card">
+            <div>
+              <span className="preview-label">Featured signal</span>
+              <strong>{formatName(heroPattern.name)}</strong>
+            </div>
+            <button
+              className="icon-label-button"
+              disabled={!audioSupported || !soundEnabled}
+              type="button"
+              onClick={() => playPattern(heroPattern)}
+            >
+              <Play size={17} strokeWidth={2.4} />
+              <span>Audition</span>
+            </button>
+          </div>
+          <HapticSignalPreview
+            activeKey={playback?.name === heroPattern.name ? playback?.id ?? 0 : 1}
+            visualization={heroPattern.visualization}
+          />
+        </aside>
       </section>
 
       <section className="summary-strip" aria-label="Library summary">
@@ -232,11 +320,14 @@ export function App() {
           <CheckCircle2 size={19} />
           <span>{audioSupported ? 'Audio preview ready' : 'Audio unsupported'}</span>
         </div>
-        <code>{installCommand}</code>
+        <div className="summary-item">
+          <Layers3 size={19} />
+          <span>iOS + Android native playback</span>
+        </div>
       </section>
 
       {selectedGroup ? (
-        <section className="detail-view">
+        <section className="detail-view" id="playground">
           <div className="detail-panel">
             <div className="detail-heading">
               <button
@@ -290,13 +381,27 @@ export function App() {
           </div>
         </section>
       ) : (
-        <section className="category-view">
+        <section className="category-view" id="playground">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Explore</p>
-              <h2>Categories</h2>
+              <p className="eyebrow">Preset catalog</p>
+              <h2>Pick a tactile intent</h2>
             </div>
             <span>{categoryGroups.length} groups</span>
+          </div>
+          <div className="featured-strip" aria-label="Featured presets">
+            {featuredPatterns.map((pattern) => (
+              <button
+                className="featured-chip"
+                disabled={!audioSupported || !soundEnabled}
+                key={pattern.name}
+                type="button"
+                onClick={() => playPattern(pattern)}
+              >
+                <Play size={15} />
+                {formatName(pattern.name)}
+              </button>
+            ))}
           </div>
           <div className="category-grid">
             {categoryGroups.map((group) => (
