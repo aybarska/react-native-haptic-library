@@ -329,7 +329,7 @@ export function App() {
           </a>
           <a
             className="icon-button"
-            href="https://github.com/ayberkmogol/react-native-haptic-library"
+            href="https://github.com/aybarska/react-native-haptic-library"
             rel="noreferrer"
             target="_blank"
             title="Open GitHub repository"
@@ -386,7 +386,7 @@ export function App() {
             </a>
             <a
               className="secondary-action"
-              href="https://github.com/ayberkmogol/react-native-haptic-library"
+              href="https://github.com/aybarska/react-native-haptic-library"
               rel="noreferrer"
               target="_blank"
             >
